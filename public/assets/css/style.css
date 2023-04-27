@@ -1,0 +1,359 @@
+*{
+    margin: 0 auto;
+}
+body {
+    padding: 10px;
+    padding-bottom: 50px;
+    /* background-color: rgba(213, 209, 209); */
+    background-color: rgb(0,131,173);
+  }
+  .logo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 100px;
+    will-change: transform;
+    transform: translateZ(0);
+    display: flex;
+    height: 50px;
+    color: #FFFFFF;
+    box-shadow: 0 -2px 5px -2px #f8f7f7;
+    /* background-color: rgb(127, 0, 0); */
+    /* background-color: rgb(116, 2, 2); */
+    /* background-color: #fff; */
+    background-color: rgb(32,39,77);
+  }
+  .logoimg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    will-change: transform;
+    transform: translateZ(0);
+    display: flex;
+    height: 50px;
+  }
+ .settings{
+  position: absolute;
+  right: 10px;
+  top: 20px;
+ }
+ .warpper{
+  margin-top: 65px;
+ }
+  
+  h1 {
+    margin-bottom: 2000px;
+  }
+  
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    will-change: transform;
+    transform: translateZ(0);
+    display: flex;
+    height: 50px;
+    color: #FFFFFF;
+    box-shadow: 0 -2px 5px -2px #f8f7f7;
+    /* background-color: rgb(127, 0, 0); */
+    /* background-color: rgb(116, 2, 2); */
+    /* background-color: #fff; */
+    background-color: rgb(42,42,46);
+  }
+  .mobile-bottom-nav__item {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .mobile-bottom-nav__item--active {
+    color: rgb(52, 12, 184);
+  }
+  .mobile-bottom-nav__item-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  input[type=text], input[type=file], input[type=password], textarea {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid #DDDDDD;
+  }
+   
+  input[type=text]:focus, input[type=file]:focus, input[type=password]:focus, textarea:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(81, 203, 238, 1);
+  }
+
+  /* Main body style begins here */
+  /* home page css */
+  .video{
+    width: fit-content;
+    max-width: 400px;
+    margin-bottom: 10px;
+  }
+  .video__item{
+    max-width: 300px;
+    margin-bottom: 0;
+  }
+  .text__home{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 0.5rem;
+  }
+.home__message{
+  padding: 15px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+  /* Login page css */
+  .login__card{
+    position: relative;
+  }
+  .card__body{
+    /* text-align: center; */
+  }
+  .accounts{
+    right: 0;
+  }
+  .form__group{
+    width: 300px;
+    margin-bottom: 20px;
+    padding: 20px 10px 10px 20px;
+    min-width: 200px;
+    background-color: #FFFF;
+    border-radius: 10px;
+  }
+  .form__contro{
+    margin: 10px 0 0 10px;
+    border-radius: 5px;
+    height: 30px;
+    border: 1px solid #2a2727;
+  }
+  .form__contro:focus{
+    box-shadow: rgba(255, 255, 255, 0.7);
+    /* border: 1px solid rgba(189, 58, 58, 0.7); */
+  }
+  .forget__password{
+    margin-left: 30px;
+  }
+  .forget{
+    text-decoration: none;
+  }
+  .support__btn{
+    height: 50px;
+    width: 150px;
+    background-color: #31b0d5;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    /* border-color: #46b8da; */
+  }
+  .support{
+    position: fixed;
+    bottom: 20%;
+    right: 10px;
+  }
+  .google{
+    margin-top: 10px;
+  }
+  
+  /* CSS */
+  .button-31 {
+    background-color: #222;
+    border-radius: 4px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0;
+    max-width: none;
+    min-height: 44px;
+    min-width: 10px;
+    outline: none;
+    overflow: hidden;
+    padding: 9px 20px 8px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+  }
+  
+  .button-31:hover,
+  .button-31:focus {
+    opacity: .75;
+  }
+  .login__btn{
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+  }
+  .google{
+    margin-top: 10px;
+    margin-left: 30px;
+  }
+  .reg{
+    margin-top: 10px;
+    margin-left: 30px;
+  }
+
+
+  /* Level Css Begins Here */
+  .vip0{
+    width: 150px;
+    height: 200px;
+    background-color: #d5e378;
+    margin: 15px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+
+  /* Task CSS begins here */
+  
+ #card2_wallet{
+  left: 0;
+  right: 0;
+ }
+
+  .card {
+    left: 0;
+    right: 0;
+    height: 300px;
+    /* padding: 2rem; */
+    border-radius: 1rem;
+    margin-bottom: 20px;
+    /* other styles */
+	/* background: rgba(255, 255, 255, .7);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px); */
+  /* From https://css.glass */
+background: rgba(255, 255, 255, 0.27);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+/* backdrop-filter: blur(0.2px); */
+/* -webkit-backdrop-filter: blur(0.2px); */
+border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .shape {
+    /* position: fixed; */
+    width: 150px;
+    /* top: .5rem;
+    left: .5rem; */
+    top: 70%;
+    left: 20%;
+  }
+  
+  .card-title {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-size: 1.2rem;
+  }
+  
+  p, a {
+    font-size: 1rem;
+  }
+  
+  a {
+    color: #4d4ae8;
+    text-decoration: none;
+  }
+  .trial__bal{
+    width: 330px !important;
+    padding: 10px 20px ;
+    height: 40px;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+background: rgba(255, 255, 255, 0.78);
+  }
+
+  .balance{
+    width: inherit;
+    height: 150px;
+    padding-top: 20px;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 1rem;
+  }
+  .no__of__task{
+    width: inherit;
+    height: 120px;
+    font-size: 0.9rem;
+    font-family: sans-serif;
+    display: flex;
+    padding: 20px 10px 5px 5px;
+    background: rgba(255, 255, 255, 0.78);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  .total__task{
+    display: block;
+  }
+  .btn__group{
+    width: 50%;
+    margin-right: 200px;
+  }
+  .wallet__items{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .wallet__btn{
+    width: 200px;
+    margin: 10px;
+    border: none;
+    justify-content: left;
+    align-items: flex-start;
+    height: 40px;
+    display: block;
+    border-radius: 5px;
+    padding: 3px 5px;
+    background-color: #DDDDDD;
+    color: #000;
+    font-family: sans-serif;
+  }
+  .submit__btn{
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+  /* Withdrawal button and page css */
+  .withdrawal__card{
+    text-align: center;
+  }
+  .withdrawal__btnn{
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: sans-serif;
+    background-color: #03bb50;
+    color: #fff;
+    margin-top: 30px;
+    border: none;
+
+  }

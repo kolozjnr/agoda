@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/carousel.css">
+        <link rel="stylesheet" href="assets/css/tabs.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+        <section class="container">
+            <style>
+                        
+                .main {
+                    display: inline-block;
+                    margin: 30px;
+                    position: fixed;
+                    width: 150px;
+                    text-align: left;
+                }
+                .list {
+                    width: 100%;
+                    position: absolute;
+                    z-index: 1;
+                    top: 15px;
+                    right: -90px;
+                    border-top: 1px solid #eee;
+                    visibility: hidden;
+                    z-index: 99999;
+                    opacity: 0;
+                    cursor: pointer;
+                    -webkit-transition: 0.2s ease-in-out;
+                    transition: 0.2s ease-in-out;
+                }
+                .item {
+                    width: 100%;
+                    line-height: 45px;
+                    padding-left: 20px;
+                    background-color: #fff;
+                    color: #000;
+                    -webkit-transition: 0.2s ease-in-out;
+                    transition: 0.2s ease-in-out;
+                    font-weight: 400;
+                }
+                .item:hover {
+                    background-color: #eee;
+                }
+                
+                /**********
+                ***********/
+                
+                .list-5 {
+                    -webkit-transform: translateX(-20px);
+                    transform: translateX(-20px);
+                    z-index: 99999;
+                }
+                #drop-5:checked~ .list-5 {
+                    visibility: visible;
+                    opacity: 2;
+                }
+                #drop-5:checked~ .list-5 {
+                    -webkit-transform: translateX(0px);
+                    transform: translateX(0px);
+                }
+                
+                </style>
+                <script>
+                   function popmenu(){
+                    document.getElementById("setgear").click();
+                   }
+                </script>
+                <div class="logo">
+                    <img src="assets/img/1676378715490.png" width="150" height="60" alt="Expedia">
+                    <span class="settings">
+                        <i style="color:#FFF" onclick="popmenu()" id="gear" class="bi bi-gear"></i>
+                        <i class="bi bi-chat-left-dots"></i>
+                    </span>
+                    <div class="main" style="z-index: 9999;">
+                        <input type="checkbox" id="drop-5" hidden>
+                        <label style="display: none;" id="setgear" class="dropHeader dropHeader-5" for="drop-5">Click Me</label>
+                        <div class="list list-5">
+                        <div class="item"><a href="account.html">Account Settings</a></div>
+                        <div class="item"><a href="support.html">Support</a></div>
+                        <div class="item"><a href="security.html">Security</a></div>
+                        <div class="item"><a href="">Log Out</a></div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="warpper">
+               <i style="font-size: 10rem;" class="bi bi-whatsapp"></i>
+            </div>
+
+        </section>
+        <style>
+            .menus{
+                color: #fff;
+                font-size: 0.9rem;
+                text-decoration: none;font-family: sans-serif;
+            }
+        </style>
+        <nav class="mobile-bottom-nav">
+                    <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+                        <a href="index.html" class="menus">
+                            <div class="mobile-bottom-nav__item-content">
+                                <i class="bi bi-house-door-fill"></i>
+                                Home
+                            </div>		
+                        </a>
+                    </div>
+                    <div class="mobile-bottom-nav__item">
+                        <a href="level.html" class="menus">		
+                            <div class="mobile-bottom-nav__item-content">
+                                <i class="bi bi-water"></i>
+                                Level
+                            </div>
+                        </a>
+                    </div>
+                    <div class="mobile-bottom-nav__item">
+                        <a href="task.html" class="menus">
+                            <div class="mobile-bottom-nav__item-content">
+                                <i class="bi bi-building-fill-check"></i>
+                                Task
+                            </div>
+                        </a>		
+                    </div>
+                    
+                    <!-- <div class="mobile-bottom-nav__item">
+                        <a href="event.html" class="menus">
+                            <div class="mobile-bottom-nav__item-content">
+                                <i class="bi bi-calendar-event-fill"></i>
+                                Event
+                            </div>
+                        </a>		
+                    </div> -->
+        
+                    <div class="mobile-bottom-nav__item">
+                        <a href="wallet-bind.html" class="menus">
+                            <div class="mobile-bottom-nav__item-content">
+                                <i class="bi bi-currency-bitcoin"></i>
+                                Crypto
+                            </div>
+                        </a>		
+                    </div>
+        
+                    <div class="mobile-bottom-nav__item">
+                        <a href="welfare.html" class="menus">
+                            <div class="mobile-bottom-nav__item-content">
+                                <i class="bi bi-hospital-fill"></i>
+                                Welfare
+                            </div>	
+                        </a>	
+                    </div>
+        
+                    <div class="mobile-bottom-nav__item">
+                        <div class="mobile-bottom-nav__item-content">
+                            <i class="bi bi-headset"></i>
+                            Customer Service
+                        </div>		
+                    </div>
+                </nav>
+                <script src="assets/js/index.js" async defer></script>
+        
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+            </body>
+        </html>
