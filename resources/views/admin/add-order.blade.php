@@ -14,7 +14,7 @@
             <div class="warpper">
                 <div class="card" style="height: auto;">
                     <h3 class="card-title">Create Order</h3>
-                    <form id="create-order" >
+                    <form id="create-order" enctype="multipart/form-data">
                         @csrf
                         <div class="form__group" style="width:350px !important">
                             {{-- <div class="" style="flex-direction:row; display:block; margin-bottom:5px; margin: 10px;">
