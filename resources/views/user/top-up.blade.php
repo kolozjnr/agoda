@@ -254,13 +254,13 @@
                     <div class="btn-groups" id="usdt">
                         <!-- HTML !-->
                     <button class="button-28" value="10" id="amount" role="button">10</button>
-                    <button class="button-28" value="20" id="amount1" role="button">20</button>
-                    <button class="button-28" value="30" id="amount2" role="button">30</button>
-                    <button class="button-28" value="50" id="amount3" role="button">50</button>
-                    <button class="button-28" value="100" id="amount4" role="button">100</button>
-                    <button class="button-28" value="300" id="amount5" role="button">300</button>
-                    <button class="button-28" value="500" id="amount6" role="button">500</button>
-                    <button class="button-28" value="1000" id="amount7" role="button">1000</button>
+                    <button class="button-28" value="20" id="amount" role="button">20</button>
+                    <button class="button-28" value="30" id="amount" role="button">30</button>
+                    <button class="button-28" value="50" id="amount" role="button">50</button>
+                    <button class="button-28" value="100" id="amount" role="button">100</button>
+                    <button class="button-28" value="300" id="amount" role="button">300</button>
+                    <button class="button-28" value="500" id="amount" role="button">500</button>
+                    <button class="button-28" value="1000" id="amount" role="button">1000</button>
                     <div style="margin-top: 20px">
                         <button class="button-28" value="TRC20" id="trc20" role="button">TRC20</button>
                         <button class="button-28" value="ERC20" id="erc20" role="button">ERC20</button>
@@ -325,7 +325,7 @@
 
 
 
-            var btn = document.getElementById("amount")
+            //var btn = document.getElementById("amountw")
             var btn1 = document.getElementById("amount1")
             var btn2 = document.getElementById("amoun2")
             var btn3 = document.getElementById("amoun3t")
@@ -333,6 +333,18 @@
             var btn5 = document.getElementById("amount5")
             var btn6 = document.getElementById("amount6")
             var btn7 = document.getElementById("amount7")
+            
+            const buttons = document.querySelectorAll('#amount');
+            
+            
+            buttons.forEach(function(button) {
+                  // Code to be executed for each button goes here
+                  button.addEventListener('click', function() {
+                  alert('Button ' + button.textContent + ' was clicked!');
+                });
+            });
+            
+            
             var erc = document.getElementById("erc20")
             var trc = document.getElementById("trc20")
 
