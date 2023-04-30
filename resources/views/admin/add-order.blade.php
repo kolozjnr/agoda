@@ -14,17 +14,17 @@
             <div class="warpper">
                 <div class="card" style="height: auto;">
                     <h3 class="card-title">Create Order</h3>
-                    <form id="create-order" enctype="multipart/form-data">
+                    <form id="create-order"  method="post" action="/order" enctype="multipart/form-data">
                         @csrf
                         <div class="form__group" style="width:350px !important">
                             {{-- <div class="" style="flex-direction:row; display:block; margin-bottom:5px; margin: 10px;">
                                 <label for="payee Name">Order Name:</label>
                                 <input type="text" name="name" id="name" class="form__contro">
                             </div> --}}
-                            <input type="hidden" name="order_status" value="0">
-                            <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
-                            <input type="hidden" name="order_no" value="{{$rand}}">
-                            <input type="hidden" name="oder_photo" value="Not Relevant">
+                            <input type="hidden" id="status" name="order_status" value="0">
+                            <input type="hidden" id="user_id" name="user_id" value="{{auth()->user()->id}}">
+                            <input type="hidden" id="order_no" name="order_no" value="{{$rand}}">
+                            {{-- <input type="hidden" id="order_photo" name="oder_photo" value="Not Relevant"> --}}
                             
                             <div class="" style="flex-direction:row; display:block;  margin-bottom:5px; margin: 10px;">
                                 <label for="payee Name" >Order Price:</label>
@@ -34,6 +34,10 @@
                             <div class="" style="flex-direction:row; display:block;  margin-bottom:5px; margin: 10px;">
                                 <label for="payee Name" >Order Commission:</label>
                                 <input type="text" name="order_com" id="commission" class="form__contro">
+                            </div>
+                            <div class="" style="flex-direction:row; display:block;  margin-bottom:5px; margin: 10px;">
+                                <label for="payee Name" >YouTube Url</label>
+                                <input type="text" id="order_photo" name="oder_photo" value="">
                             </div>
                             <div class="" style="flex-direction:row; display:block;  margin-bottom:5px; margin: 10px;">
                                 {{-- <label for="payee Name">Qty:</label>
@@ -51,7 +55,7 @@
                             
                             <div class="" style="flex-direction:row; display:block;  margin-bottom:5px; margin: 10px;">
                                 <label for="payee Name">Order File:</label>
-                                <input type="file" name="order_file" id="order_file" class="form__contro" style="width: 300px">
+                                <input type="file" name="order_file" id="order_file" class="form__contro" style="width: 300px" required>
                             </div>
 
                              <div class="" style="flex-direction:row; display:block;  margin-bottom:5px; margin: 10px;">

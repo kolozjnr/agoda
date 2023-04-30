@@ -233,6 +233,15 @@ body {
 
 
   /* Task CSS begins here */
+
+  .card-orders{
+    width: 100%;
+    background-color: #FFF;
+    color: #000;
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    margin: 0;
+  }
   
  #card2_wallet{
   left: 0;
@@ -356,4 +365,83 @@ background: rgba(255, 255, 255, 0.78);
     margin-top: 30px;
     border: none;
 
+  }
+
+  /* Snackbar CSS */
+  :root {
+    --bs-font-sans-serif: var(--bs-font-monospace);
+  }
+  
+  main {
+    max-width: 720px;
+    padding: 0 2rem;
+    -webkit-backdrop-filter: blur(0.2rem);
+            backdrop-filter: blur(0.2rem);
+  }
+  
+  .toast:not(.show) {
+    display: block;
+  }
+  
+  .toast-container {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  
+  [data-component*=toast] {
+    position: static;
+  }
+  [data-component*=toast] [data-ref=form] {
+    display: flex;
+  }
+  [data-component*=toast][open].is-closing {
+    -webkit-animation: disappear 0.3s;
+            animation: disappear 0.3s;
+  }
+  [data-component*=toast][open] {
+    -webkit-animation: appear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: appear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  [data-component*=toast] .btn-close {
+    margin: auto;
+    -webkit-margin-end: 1em;
+            margin-inline-end: 1em;
+  }
+  [data-component*=toast].toast-success .btn-close, [data-component*=toast].toast-error .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+  }
+  
+  @-webkit-keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @-webkit-keyframes disappear {
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+  @keyframes disappear {
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
   }

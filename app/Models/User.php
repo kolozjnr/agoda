@@ -36,6 +36,8 @@ class User extends Authenticatable
         'uname',
         'wallet_adddress',
         'bankname',
+        'task_completed',
+        'current_level'
     ];
 
     /**

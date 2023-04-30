@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/top-up', [UnivController::class, 'topup'])->name('topup');
 
     Route::resource('/order', OrderController::class);
+
+    Route::post('/updateorinsert', [OrderController::class, 'updateorinsert'])->name('updateorinsert');
     
 });
 

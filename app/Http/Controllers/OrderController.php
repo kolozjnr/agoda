@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -36,10 +37,10 @@ class OrderController extends Controller
         $order = $request->all();
 
         if($image = $request->file('order_file')){
-            $destination = 'public/orders';
+            $destination = 'orders';
             $profileImage = 'public/orders/'.date('YmdHis'). "." . $image->getClientOriginalExtension();
-            $file = move($destination, $profileImage);
-            $order->order_file = $profileImage;
+            $image->move(public_path('orders'), $profileImage);
+            $order['order_file'] = $profileImage;
         }
 
         
@@ -66,7 +67,7 @@ class OrderController extends Controller
         //     dd($request);
     
             order::create($order);
-            
+            return response()->json(['success'=>'Successfully uploaded.']);
        // }
     }
 
@@ -75,7 +76,13 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $orders = DB::table('orders')
+        ->where([
+            //["subscription_status", "=", "Active"],
+            ["order_status", "=", "0"],
+            ["order_qty", ">", "0"]])->limit('4')->inRandomOrder()->get();
+
+            return view("user.show-orders", compact("orders"));
     }
 
     /**
@@ -100,5 +107,26 @@ class OrderController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function updateorinsert(Request $request){
+        $id = Auth::user()->id;
+        DB::table('users')
+        ->where('id', $id)
+        ->update([
+            'task_completed' => DB::raw('task_completed +1'),
+            //'next_task' => DB::raw('current_task + 1')
+        ]);
+            
+        $order_id = $request->order_id;
+        DB::table('orders')
+    ->where('id', $order_id)
+    ->update([
+        'order_qty' => DB::raw('order_qty -1'),
+        //'next_task' => DB::raw('current_task + 1')
+    ]);
+
+
+        return response()->json(['success'=>'Successfully updated.']);
     }
 }
