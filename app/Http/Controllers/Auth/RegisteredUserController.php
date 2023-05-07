@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
 
 class RegisteredUserController extends Controller
 {
@@ -40,8 +41,26 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'task_completed' => '1',
+            'balance' => '10',
             'password' => Hash::make($request->password),
         ]);
+        if ($request->input('referral_code')) {
+            $referralUser = User::where('referral_code', $request->input('referral_code'))->first();
+            if ($referralUser) {
+                $user->referrer_id = $referralUser->id;
+
+                $refree_id = $referralUser->id;
+                DB::table('users')
+                ->where('id', $refree_id)
+                ->update([
+                    'referral_bonus' => DB::raw('referral_bonus +10'),
+                    //'next_task' => DB::raw('current_task + 1')
+                ]);
+                $user->referral_bonus = "0";
+            }
+        }
+    
+        $user->generateReferralCode();
 
         event(new Registered($user));
 

@@ -31,4 +31,8 @@ class UnivController extends Controller
     public function topup(){
         return view("user.top-up");
     }
+    public function topupsubmit(){
+        return view("user.top-up-submit");
+    }
+    
 }

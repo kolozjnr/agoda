@@ -74,7 +74,18 @@
                 <div class="item"><a href="{{route('account')}}">Account Settings</a></div>
                 <div class="item"><a href="support.html">Support</a></div>
                 <div class="item"><a href="security.html">Security</a></div>
-                <div class="item"><a href="">Log Out</a></div>
+                
+                <div class="item">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </form>
+                </div>
                 </div>
             </div>
         </div>

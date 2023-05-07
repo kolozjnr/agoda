@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/wallet', [UnivController::class, 'wallet'])->name('wallet');
     Route::get('/support', [UnivController::class, 'support'])->name('support');
     Route::get('/top-up', [UnivController::class, 'topup'])->name('topup');
+    Route::get('/top-up-submit', [UnivController::class, 'topupsubmit'])->name('topupsubmit');
 
     Route::resource('/order', OrderController::class);
 

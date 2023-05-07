@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Str;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -37,7 +38,9 @@ class User extends Authenticatable
         'wallet_adddress',
         'bankname',
         'task_completed',
-        'current_level'
+        'current_level',
+        'referral_code',
+        'referral_id'
     ];
 
     /**
@@ -58,4 +61,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $appends = ['referral_link'];
+
+        public function generateReferralCode()
+    {
+        $code = Str::random(8);
+        while (User::where('referral_code', $code)->exists()) {
+            $code = Str::random(8);
+        }
+        $this->referral_code = $code;
+        $this->save();
+        return $code;
+    }
+    public function referrer()
+    {
+        return $this->belongsTo(User::class, 'referral_id', 'id');
+    }
+
+
+    public function referrals()
+    {
+        return $this->hasMany(User::class, 'referral_id', 'id');
+    }
+    public function getReferralLinkAttribute()
+    {
+        return $this->referral_link = route('register', ['ref' => $this->referral_code]);
+    }
+
 }

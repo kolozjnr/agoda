@@ -24,8 +24,8 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class="font-sans antialiased" style="background-color: rgb(0,131,173);">
+        <div class="min-h-screen bg-gray-100" style="background-color: rgb(0,131,173);">
             @include('layouts.header')
             {{-- @include('layouts.navigation') --}}
 
@@ -39,7 +39,9 @@
             @endif --}}
 
             <!-- Page Content -->
-            <main>
+            <main >                
+                @include('message.flash-message')
+
                 {{ $slot }}
                 @include("layouts.bottom-nav");
             </main>

@@ -245,59 +245,25 @@
                 </script>
 
             <div class="warpper">
-            <div class="card" style="height: auto;">
-                    <h3 class="card-title">Top Up</h3>
-                    <div class="options d-flex" style="margin:0.5px 1px">
-                        <h3 id="crypt" style="cursor: pointer" onclick="crypt()">Crypto</h3>
-                        {{-- <h3 id="bank"  style="cursor: pointer" onclick="bank()">Bank</h3> --}}
-                    </div>
-                    <div class="btn-groups" id="usdt">
-                        <!-- HTML !-->
-                    <button class="button-28" value="10" id="amount" role="button">10</button>
-                    <button class="button-28" value="20" id="amount" role="button">20</button>
-                    <button class="button-28" value="30" id="amount" role="button">30</button>
-                    <button class="button-28" value="50" id="amount" role="button">50</button>
-                    <button class="button-28" value="100" id="amount" role="button">100</button>
-                    <button class="button-28" value="300" id="amount" role="button">300</button>
-                    <button class="button-28" value="500" id="amount" role="button">500</button>
-                    <button class="button-28" value="1000" id="amount" role="button">1000</button>
-                    <div style="margin-top: 20px">
-                        {{-- <button class="button-28" value="TRC20" id="trc20" role="button">TRC20</button>
-                        <button class="button-28" value="ERC20" id="erc20" role="button">ERC20</button> --}}
-                        <select name="network" id="network">
-                            <option value="" selected disabled>Choose Network</option>
-                            <option value="erc20">ERC20</option>
-                            <option value="trc20">TRC20</option>
-                        </select>
-                        <input type="text" name="real-amount" value="" class="form-control" placeholder="real amount" id="real-amount">
-                    </div>
-                    </div>
-
-                    
-                    {{-- <div class="btn-groups" id="bankbtn">
-                        <!-- HTML !-->
-                    <button class="button-28" value="100" id="amount" role="button">&#36; 100</button>
-                    <button class="button-28" value="300" id="amount1" role="button">&#36; 3,00</button>
-                    <button class="button-28" value="500" id="amount2" role="button">&#36; 5,00</button>
-                    <button class="button-28" value="1000" id="amount3" role="button">&#36; 1,000</button>
-                    <button class="button-28" value="2000" id="amount4" role="button">&#36; 2,000</button>
-                    <button class="button-28" value="3000" id="amount5" role="button">&#36; 3,000</button>
-                    <button class="button-28" value="5000" id="amount6" role="button">&#36; 5,000</button>
-                    <button class="button-28" value="10000" id="amount7" role="button">&#36; 10,00</button>
-
-                    </div> --}}
+            <div class="card" style="height: auto; padding:20px">
+                <h3 class="card-title">Submit for Comfirmation</h3>
+                <div class="options d-flex" style="margin:0.5px 1px">
+                       
                 </div>
+                @php
+                    
+                $wallet = "123hegfdvsfwf33v2v2";
+                @endphp
+
 
                 <form action="">
                     <!-- HTML !-->
+                    <button class="button-37" role="button">Submit </button>
 
                 <span class="network" id="network"></span>
                 <span class="value" id="value" style="color:#000; font-size:1.5rem"></span>
                 
-               
-
-                
-                <button class="button-37" onclick="submit()" role="button"><a href="{{route('topupsubmit')}}">Submit</a> </button>
+                <input type="password" name="real-amount" value="osoosoziozioz" class="form-control" size="40" placeholder="real amount" id="real-amount">
                 </form>
                 
             </div>
@@ -347,21 +313,15 @@
             const buttons = document.querySelectorAll('#amount');
             
             var span = document.getElementById("value")
-            var inp = document.getElementById("real-amount")
+            
             buttons.forEach(function(button) {
                   // Code to be executed for each button goes here
                   button.addEventListener('click', function() {
                   //alert('Button ' + button.textContent + ' was clicked!');
                   span.textContent = button.textContent;
-                  //document.getElementById("network").value = button.textContent;
-                  inp.value = button.textContent;
+                  document.getElementById("network").value = button.textContent;
                 });
             });
-
-            function submit(){
-                var value = document.getElementById("value").innerText;
-                alert(value)
-            }
             
             
             var erc = document.getElementById("erc20")

@@ -16,6 +16,13 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- Referal -->
+        <div class="mt-4">
+            <x-input-label for="referal" :value="__('Referal')" />
+            <x-text-input class="block mt-1 w-full" type="text" name="referral_code" id="referral_code" :value="old('referal')"  autocomplete="Referal" />
+            <x-input-error :messages="$errors->get('referal')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
