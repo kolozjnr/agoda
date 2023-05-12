@@ -141,23 +141,7 @@
                     document.getElementById("setgear").click();
                    }
                 </script>
-                <div class="logo">
-                    <img src="assets/img/1676378715490.png" width="150" height="60" alt="Expedia">
-                    <span class="settings">
-                        <i style="color:#FFF" onclick="popmenu()" id="gear" class="bi bi-gear"></i>
-                        <i class="bi bi-chat-left-dots"></i>
-                    </span>
-                    <div class="main" style="z-index: 9999;">
-                        <input type="checkbox" id="drop-5" hidden>
-                        <label style="display: none;" id="setgear" class="dropHeader dropHeader-5" for="drop-5">Click Me</label>
-                        <div class="list list-5">
-                        <div class="item"><a href="account.html">Account Settings</a></div>
-                        <div class="item"><a href="support.html">Support</a></div>
-                        <div class="item"><a href="security.html">Security</a></div>
-                        <div class="item"><a href="">Log Out</a></div>
-                        </div>
-                    </div>
-                </div>
+                @@include('layouts/header.blade.php');
             <!-- <div class="withdrawal__card" style="text-align: center;">
                         <button class="withdrawal__btnn">Bind Account</button>
                     </div> -->
@@ -170,7 +154,7 @@
                     <label class="tab" id="two-tab" for="two">Crypto</label>
                     <!-- <label class="tab" id="three-tab" for="three">Prerequisites</label> -->
                 </div>
-                <div class="panels1" style="">
+                <d5iv class="panels1" style="">
                 <div class="panel" id="one-panel" style="">
                     <div class="withdrawal__card">
                         <button class="withdrawal__btnn">Bind Account</button>
@@ -180,6 +164,8 @@
                         <div class="form__group" style="width:350px !important">
                             <div class="" style="flex-direction:row; display:block; margin-bottom:5px; margin: 10px;">
                                 <label for="payee Name">Payee Name:</label>
+                                <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                                <input type="hidden" name="status" value="1">
                                 <input type="text" name="" id="" class="form__contro">
                             </div>
                             
@@ -220,12 +206,16 @@
                     <div class="withdrawal__card">
                         <button class="withdrawal__btnn">Bind Wallet</button>
                     </div>
-                    <form action="" id="bank-bind">
+                    <form method="POST" action="{{route('wallet')}}" id="wallet-bind" >
+                        @csrf
                         <h2 style="font-family: sans-serif; font-weight:900; font-size:1.5rem">Crypto Wallet</h2>
                         <div class="form__group" style="width:350px !important">
                             <div class="" style=" margin-bottom:30px;">
+                                
+                                <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                                <input type="hidden" name="status" value="1">
                                 <!-- <label for="payee Name">Payee Name:</label> -->
-                                <select name="" id="" class="select-css" style="width: 230px;">
+                                <select name="type" id="" class="select-css" style="width: 230px;">
                                     <option value="" selected disabled>Select Coin Type</option>
                                     <option value="btc">BTC</option>
                                     <option value="eth">ETH</option>
@@ -235,7 +225,7 @@
                             
                             <div class="" style=" margin-bottom:30px;">
                                 <!-- <label for="payee Name">Account No:</label> -->
-                                <select name="" id="" class="select-css" style="width: 230px;">
+                                <select name="network" id="" class="select-css" style="width: 230px;">
                                     <option value="" selected disabled>Select Network Type</option>
                                     <option value="erc20">ERC-20</option>
                                     <option value="beb20">BEP-20</option>
@@ -245,7 +235,7 @@
                             
                             <div class="" style="flex-direction:row; display:block;  margin-bottom:30px;">
                                 <label for="payee Name">Wallet Address:</label>
-                                <input type="text" name="" id="" class="form__contro">
+                                <input type="text" name="address" id="" class="form__contro">
                             </div>
 
                              
@@ -261,7 +251,7 @@
                     <!-- <div class="panel-title">Take-Away Skills</div>
                     <p>You will learn many aspects of styling web pages! You’ll be able to set up the correct file structure, edit text and colors, and create attractive layouts. With these skills, you’ll be able to customize the appearance of your web pages to suit your every need!</p> -->
                 </div>
-                </div>
+                </d5iv>
             </div>
 
         </section>

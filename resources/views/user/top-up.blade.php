@@ -182,7 +182,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 140px;
+  width: 120px;
   will-change: transform;
 }
 .button-28:disabled {
@@ -229,13 +229,19 @@
   box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
   transform: translateY(-2px);
 }
+.amt{
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
 
 @media (min-width: 768px) {
   .button-37 {
     padding: 10px 30px;
   }
 }
-                </style>
+
+</style>
                 <script>
                    function popmenu(){
                     document.getElementById("setgear").click();
@@ -245,13 +251,13 @@
                 </script>
 
             <div class="warpper">
-            <div class="card" style="height: auto;">
-                    <h3 class="card-title">Top Up</h3>
-                    <div class="options d-flex" style="margin:0.5px 1px">
-                        <h3 id="crypt" style="cursor: pointer" onclick="crypt()">Crypto</h3>
+            <div class="card" style="height: auto; padding:20px">
+                    <h3 class="card-title" style="text-align: center">Top Up</h3>
+                  
+                        <h3 id="crypt" style="cursor: pointer; text-align:center" onclick="crypt()">Crypto</h3>
                         {{-- <h3 id="bank"  style="cursor: pointer" onclick="bank()">Bank</h3> --}}
-                    </div>
-                    <div class="btn-groups" id="usdt">
+                    
+                    <div class="btn-groups" id="usdt" >
                         <!-- HTML !-->
                     <button class="button-28" value="10" id="amount" role="button">10</button>
                     <button class="button-28" value="20" id="amount" role="button">20</button>
@@ -261,15 +267,14 @@
                     <button class="button-28" value="300" id="amount" role="button">300</button>
                     <button class="button-28" value="500" id="amount" role="button">500</button>
                     <button class="button-28" value="1000" id="amount" role="button">1000</button>
-                    <div style="margin-top: 20px">
+                    <div style="padding-top: 20px; margin:auto; text-align:center">
                         {{-- <button class="button-28" value="TRC20" id="trc20" role="button">TRC20</button>
                         <button class="button-28" value="ERC20" id="erc20" role="button">ERC20</button> --}}
-                        <select name="network" id="network">
+                        <select class="form-contro" id="networks" name="networks">
                             <option value="" selected disabled>Choose Network</option>
-                            <option value="erc20">ERC20</option>
-                            <option value="trc20">TRC20</option>
+                            <option value="ERC20">ERC20</option>
+                            <option value="TRC20">TRC20</option>
                         </select>
-                        <input type="text" name="real-amount" value="" class="form-control" placeholder="real amount" id="real-amount">
                     </div>
                     </div>
 
@@ -288,16 +293,24 @@
                     </div> --}}
                 </div>
 
-                <form action="">
+                <form action="" id="submit-topup" onsubmit="topUp()">
+                
                     <!-- HTML !-->
+                    <div class="head">
+                        <strong class="amt">Amount:</strong>
+                        <span class="value" id="value" style="color:#000; font-size:1rem"></span>
+                    </div>
 
-                <span class="network" id="network"></span>
-                <span class="value" id="value" style="color:#000; font-size:1.5rem"></span>
+                    <div class="head">
+                        <strong class="amt">Wallet:</strong>
+                        <span class="value1" id="value1" style="color:#000; font-size:1rem"></span>
                 
-               
+                    </div>
+            
 
-                
-                <button class="button-37" onclick="submit()" role="button"><a href="{{route('topupsubmit')}}">Submit</a> </button>
+                <div class="topupbtn" style="margin-top: 10px">
+                    <button class="button-37" role="button">Submit</button>
+                </div>
                 </form>
                 
             </div>
@@ -319,6 +332,8 @@
             //     $("#bankbtn").hide();
             // })
 
+            
+
             document.addEventListener("DOMContentLoaded", () => {
                 $("#usdt").show()
                 $("#bankbtn").hide();
@@ -332,8 +347,6 @@
                 $("#usdt").hide()
                 $("#bankbtn").show();
             }
-
-
 
             //var btn = document.getElementById("amountw")
             var btn1 = document.getElementById("amount1")
@@ -354,19 +367,47 @@
                   //alert('Button ' + button.textContent + ' was clicked!');
                   span.textContent = button.textContent;
                   //document.getElementById("network").value = button.textContent;
-                  inp.value = button.textContent;
+                  //inp.value = button.textContent;
                 });
             });
 
-            function submit(){
-                var value = document.getElementById("value").innerText;
-                alert(value)
-            }
-            
+            document.getElementById("networks").addEventListener("change", function(){
+            var me =this.value;
+            var val1 = document.getElementById("value1").textContent = me
+            })
+
+          document.getElementById("submit-topup").addEventListener('submit', function(){
+            var value = document.getElementById("value").textContent
+            //alert(value1)
+            var x = document.getElementById("mySelect").value;
+            document.getElementById("demo").innerHTML = x;
+          })
             
             var erc = document.getElementById("erc20")
             var trc = document.getElementById("trc20")
 
+//Top up
+function topUp(){
+			var amount = document.getElementById("value").innerText;
+			var wallet = document.getElementById("value1").innerText;
+			//alert(wallet)
+			//console.log(wallet)
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function(){
+				if(this.readyState === 4 && this.status === 200){
+					console.log(this.responseText)
+					window.location.href = "/top-up-submit?wallet="+ wallet + "&amount=" + amount + "&t=" + Math.random()
+				}
+				else{
+
+				}
+			}
+			xhr.open("GET", "/top-up-submit")
+			//xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.setRequestHeader('X-CSRF-Token', '{{ csrf_token() }}');
+			xhr.send();
+		 }
 
         </script>
+        
 </x-app-layout>

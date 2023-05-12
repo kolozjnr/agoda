@@ -118,7 +118,7 @@
             <div class="wallet__items" style="display: flex;">
                 <div class="button__group">
                     <button class="wallet__btn"><a href="{{route('topup')}}"> Top-up</a> </button>
-                    <button class="wallet__btn">Withdraw</button>
+                    <button class="wallet__btn"> <a href="{{route('wallet')}}">Withdraw </a></button>
                     <button class="wallet__btn">Record</button>
                     <button class="wallet__btn">R & R</button>
                     <button class="wallet__btn">Details</button>

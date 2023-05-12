@@ -36,9 +36,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/task', [UnivController::class, 'task'])->name('task');
     //Route::resource('/task', [TaskController::class]);
     Route::get('/wallet', [UnivController::class, 'wallet'])->name('wallet');
+    Route::post('/wallet', [UnivController::class, 'postWallet'])->name('wallet');
     Route::get('/support', [UnivController::class, 'support'])->name('support');
     Route::get('/top-up', [UnivController::class, 'topup'])->name('topup');
     Route::get('/top-up-submit', [UnivController::class, 'topupsubmit'])->name('topupsubmit');
+    Route::post('/deposit', [UnivController::class, 'deposit'])->name('deposit');
 
     Route::resource('/order', OrderController::class);
 

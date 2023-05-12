@@ -6,155 +6,8 @@
     </x-slot>
         <section class="container">
             <style>
-                        
-                .main {
-                    display: inline-block;
-                    margin: 30px;
-                    position: fixed;
-                    width: 150px;
-                    text-align: left;
-                }
-                .list {
-                    width: 100%;
-                    position: absolute;
-                    z-index: 1;
-                    top: 15px;
-                    right: -90px;
-                    border-top: 1px solid #eee;
-                    visibility: hidden;
-                    z-index: 99999;
-                    opacity: 0;
-                    cursor: pointer;
-                    -webkit-transition: 0.2s ease-in-out;
-                    transition: 0.2s ease-in-out;
-                }
-                .item {
-                    width: 100%;
-                    line-height: 45px;
-                    padding-left: 20px;
-                    background-color: #fff;
-                    color: #000;
-                    -webkit-transition: 0.2s ease-in-out;
-                    transition: 0.2s ease-in-out;
-                    font-weight: 400;
-                }
-                .item:hover {
-                    background-color: #eee;
-                }
-                
-                /**********
-                ***********/
-                
-                .list-5 {
-                    -webkit-transform: translateX(-20px);
-                    transform: translateX(-20px);
-                    z-index: 99999;
-                }
-                #drop-5:checked~ .list-5 {
-                    visibility: visible;
-                    opacity: 2;
-                }
-                #drop-5:checked~ .list-5 {
-                    -webkit-transform: translateX(0px);
-                    transform: translateX(0px);
-                }
-
-                /* Accordion */
-                @charset "UTF-8";
-                body {
-                color: #2c3e50;
-                background: #ecf0f1;
-                padding: 0 1em 1em;
-                }
-
-                h1 {
-                margin: 0;
-                line-height: 2;
-                text-align: center;
-                }
-
-                h2 {
-                margin: 0 0 0.5em;
-                font-weight: normal;
-                }
-
-                input {
-                position: absolute;
-                opacity: 0;
-                z-index: -1;
-                }
-
-                .row {
-                display: flex;
-                }
-                .row .col {
-                flex: 1;
-                }
-                .row .col:last-child {
-                margin-left: 1em;
-                }
-
-                /* Accordion styles */
-                .tabs {
-                border-radius: 8px;
-                overflow: hidden;
-                box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
-                }
-
-                .tab {
-                width: 100%;
-                color: white;
-                overflow: hidden;
-                background-color: inherit !important;
-                }
-                .tab-label {
-                display: flex;
-                justify-content: space-between;
-                padding: 1em;
-                background: #2c3e50;
-                font-weight: bold;
-                cursor: pointer;
-                /* Icon */
-                }
-                .tab-label:hover {
-                background: #1a252f;
-                }
-                .tab-label::after {
-                content: "❯";
-                width: 1em;
-                height: 1em;
-                text-align: center;
-                transition: all 0.35s;
-                }
-                .tab-content {
-                max-height: 0;
-                padding: 0 1em;
-                color: #2c3e50;
-                background: white;
-                transition: all 0.35s;
-                }
-                .tab-close {
-                display: flex;
-                justify-content: flex-end;
-                padding: 1em;
-                font-size: 0.75em;
-                background: #2c3e50;
-                cursor: pointer;
-                }
-                .tab-close:hover {
-                background: #1a252f;
-                }
-
-                input:checked + .tab-label {
-                background: #1a252f;
-                }
-                input:checked + .tab-label::after {
-                transform: rotate(90deg);
-                }
-                input:checked ~ .tab-content {
-                max-height: 100vh;
-                padding: 1em;
-                }
+                      
+          
 
 
                 /* CSS */
@@ -236,6 +89,8 @@
   }
 }
                 </style>
+
+                
                 <script>
                    function popmenu(){
                     document.getElementById("setgear").click();
@@ -244,30 +99,47 @@
                    
                 </script>
 
-            <div class="warpper">
-            <div class="card" style="height: auto; padding:20px">
-                <h3 class="card-title">Submit for Comfirmation</h3>
-                <div class="options d-flex" style="margin:0.5px 1px">
-                       
-                </div>
+            <div class="warpper" style="">
                 @php
-                    
-                $wallet = "123hegfdvsfwf33v2v2";
+                $rand = "123hegfdvsfwf33v2v2";
                 @endphp
-
-
-                <form action="">
-                    <!-- HTML !-->
-                    <button class="button-37" role="button">Submit </button>
-
-                <span class="network" id="network"></span>
-                <span class="value" id="value" style="color:#000; font-size:1.5rem"></span>
-                
-                <input type="password" name="real-amount" value="osoosoziozioz" class="form-control" size="40" placeholder="real amount" id="real-amount">
-                </form>
-                
-            </div>
-
+                <div class="topupcontainer" style="background-color: #fff; width:330px; border-radius:10px; padding:10px">
+                    <div class="title">
+                        <p style="font-size:1.5rem; text-align:center; font-weight:800; padding:5px;">Submit for Confirmation</p>
+                    </div>
+                    <div style='text-align: center;'>
+                        <!-- insert your custom barcode setting your data in the GET parameter "data" -->
+                        <img alt='scan this code and make your deposit'
+                             src='https://barcode.tec-it.com/barcode.ashx?data=This+is+a+QR+Code+by+TEC-IT+for+mobile+applications+here+bwe+placed+our+address&code=MobileQRCode&eclevel=L&dmsize=Default'/>
+                      </div>
+                      <div style='padding-top:8px; text-align:center; font-size:15px; font-family: Source Sans Pro, Arial, sans-serif;'>
+                        <!-- back-linking to www.tec-it.com is required -->
+                        <a href='https://www.tec-it.com' title='Barcode Software by TEC-IT' target='_blank'>
+                         Scan this code to fund your wallet<br/>
+                          <!-- logos are optional -->
+                          <img alt='TEC-IT Barcode Software' border='0'
+                               src='{{asset('assets/img/agoda.svg')}}' width="80" height="50">
+                        </a>
+                        <p style="margin:10px">our erc20 comes here.....</p>
+                    </div>
+                    <form method="post" action="/deposit" enctype="multipart/form-data" id="popForm" style="margin-top: 10px; text-align:center">
+                      @csrf
+                        <span style="color:#000; font-size:1.1rem">Wallet: <strong>{{$wallet}}</strong></span><br>
+                        <span class="value" id="value" style="color:#000; font-size:1.1rem; margin-bottom:10px">Amount: <strong>{{$amount}}</strong></span><br>
+                        <input type="hidden" name="amount" value="{{$amount}}">
+                        <input type="hidden" name="wallet" value="{{$wallet}}">
+                        <input type="hidden" name="status" value="0">
+                        <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                        
+                        <label for="pop">Upload proof of payment</label>
+                        <input type="file" name="file" style="width:250px;" id="pop">
+                        
+        
+                        <div class="submitbtn" style="margin-top: 20px; text-align:center">
+                        <button class="button-37" role="button">Submit </button>
+                        </div>
+                    </form>
+                </div>
         </section>
         <style>
             .menus{
@@ -278,54 +150,29 @@
         </style>
         <script>
 
-            // var crypt = document.getElementById("crypto")
-            // var bank = document.getElementById("bank")
-            // document.ready(function(){
-            //     $("#usdt").show()
-            //     $("#bankbtn").hide();
-            // })
-
-            document.addEventListener("DOMContentLoaded", () => {
-                $("#usdt").show()
-                $("#bankbtn").hide();
-                });
-                       
-            function crypt(){
-                $("#usdt").show()
-                $("#bankbtn").hide();
-            }
-            function bank(){
-                $("#usdt").hide()
-                $("#bankbtn").show();
-            }
+          
 
 
+//  function deposit(e){
+// 			var form = document.querySelector("#popForm")
+// 			//alert()
+//             e.preventDefault();
 
-            //var btn = document.getElementById("amountw")
-            var btn1 = document.getElementById("amount1")
-            var btn2 = document.getElementById("amoun2")
-            var btn3 = document.getElementById("amoun3t")
-            var btn4 = document.getElementById("amount4")
-            var btn5 = document.getElementById("amount5")
-            var btn6 = document.getElementById("amount6")
-            var btn7 = document.getElementById("amount7")
-            
-            const buttons = document.querySelectorAll('#amount');
-            
-            var span = document.getElementById("value")
-            
-            buttons.forEach(function(button) {
-                  // Code to be executed for each button goes here
-                  button.addEventListener('click', function() {
-                  //alert('Button ' + button.textContent + ' was clicked!');
-                  span.textContent = button.textContent;
-                  document.getElementById("network").value = button.textContent;
-                });
-            });
-            
-            
-            var erc = document.getElementById("erc20")
-            var trc = document.getElementById("trc20")
+// 			var form_data= new FormData(form);
+// 			var xhr = new XMLHttpRequest();
+// 			console.log(form_data)
+
+// 			xhr.onreadystatechange = function(){
+// 				if(this.readyState === 4 && this.status === 200){
+// 					console.log(this.responseText)
+// 				}else{
+//                   document.querySelector(".button-37").textContent = "Loading..."; 
+// 				}
+// 			}
+// 			xhr.open("POST", "/deposit");
+// 			xhr.setRequestHeader('X-CSRF-Token', '{{ csrf_token() }}');
+// 			xhr.send(form_data);
+// 		 }
 
 
         </script>

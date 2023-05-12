@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class account extends Model
+class Wallet extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['amount','status','user_id', 'wallet', 'approved_by'];
+    protected $fillable = ['user_id', 'wallet', 'network', 'address', 'status', 'type'];
 }

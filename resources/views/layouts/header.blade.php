@@ -60,7 +60,7 @@
         </script>
         <div class="logo" style="margin-bottom: 100px;">
             <span class="logoimgs">
-                <img src="assets/img/1676378715490.png" class="logoimg" width="150" height="60" alt="Expedia">
+                <img src="{{asset('assets/img/agoda.svg')}}" class="logoimg" width="70" height="100" alt="Agoda">
             </span>
            
             <span class="settings">
