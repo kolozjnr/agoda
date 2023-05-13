@@ -42,6 +42,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'task_completed' => '1',
             'balance' => '10',
+            'current_level' => '0',
             'password' => Hash::make($request->password),
         ]);
         if ($request->input('referral_code')) {

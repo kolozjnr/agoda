@@ -115,16 +115,25 @@
                 <p>Balance</p>
                 
             </div> -->
+            <!-- Use a button to open the snackbar -->
+            <button style="display:none" id="snackk" onclick="myFunction()">Show Snackbar</button>
+
+            <!-- The actual snackbar -->
+            <div id="snackbar">Coming Soon...</div>
+
             <div class="wallet__items" style="display: flex;">
                 <div class="button__group">
                     <button class="wallet__btn"><a href="{{route('topup')}}"> Top-up</a> </button>
                     <button class="wallet__btn"> <a href="{{route('wallet')}}">Withdraw </a></button>
-                    <button class="wallet__btn">Record</button>
-                    <button class="wallet__btn">R & R</button>
-                    <button class="wallet__btn">Details</button>
+                    <button id="record" class="wallet__btn">Record</button>
+                    <button id="rr" onclick="getrr()" class="wallet__btn">R & R</button>
+                    <button id="details" onclick="details()" class="wallet__btn">Details</button>
                 </div>
-                <div class="shap__house">
-                    <img class="shape" src="https://s3.us-east-2.amazonaws.com/ui.glass/shape.svg" alt="">
+                <div class="shap__house" style="margin-top:50px; position:relative">
+                    <a href="{{url('order/show')}}">
+                        <img class="shape" src="https://s3.us-east-2.amazonaws.com/ui.glass/shape.svg" alt="start">
+                        <div class="start" style="z-index: 2; padding-top:30px">Start</div>
+                    </a>
                 </div>
                 
             </div>
@@ -136,6 +145,17 @@
                 color: #fff;
                 font-size: 0.9rem;
                 text-decoration: none;font-family: sans-serif;
+            }
+            .start{
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                color: white;
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
             }
         </style>
 </x-app-layout>

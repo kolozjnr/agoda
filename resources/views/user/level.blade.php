@@ -59,6 +59,10 @@
                     transform: translateX(0px);
                 }
                 
+                .lvls{
+                    font-size: 2rem;
+
+                }
                 </style>
                 <script>
                    function popmenu(){
@@ -97,16 +101,69 @@
                 </div>
                 <div class="panels">
                 <div class="panel" id="one-panel">
-                    <div class="panel-title">Why Learn CSS?</div>
-                    <p>Without CSS, every web page would be drab plain text and images that flowed straight down the page. With CSS, you can add color and background images and change the layout of your page — your web pages can feel like works of art!</p>
+                    @foreach ($levels as $level)
+                    <div class="level" style="display: flex;">
+                        @if ($level->current_level = "0")
+                            
+                       
+                        <div class="vip0">
+                            <div style="padding: 0;" class="contents">
+                                <strong style="top:20px">VIP 0</strong>
+                                <h5>$0-99</h5>
+                                <i class="bi bi-0-square-fill lvls"></i>
+                                {{-- <img src="assets/img/qaww.PNG" width="50" height="50" alt="level"> --}}
+                                <p style="padding: 0; font-size:0.7rem">The Commission rate is 0.65%</p>
+                                <p>Daily task is:38</p>
+                            </div>
+                        </div>
+                        @elseif($level->current_level = "1")
+                        <div class="vip0">
+                            <div style="padding: 0;" class="contents">
+                                <strong style="top:20px">VIP 1</strong>
+                                <h5>$0-99</h5>
+                                <i class="bi bi-1-square-fill lvls"></i>
+                                {{-- <img src="assets/img/qaww.PNG" width="50" height="50" alt="level"> --}}
+                                <p style="padding: 0; font-size:0.7rem">The Commission rate is 0.65%</p>
+                                <p>Daily task is:38</p>
+                            </div>
+                        </div>
+                        </div>
+                        @elseif($level->current_level = "2")
+                        <div class="level" style="display: flex;">
+                        <div class="vip0">
+                            <div style="padding: 0;" class="contents">
+                                <strong style="top:20px">VIP 2</strong>
+                                <h5>$0-99</h5>
+                                <i class="bi bi-2-square-fill lvls"></i>
+                                {{-- <img src="assets/img/qaww.PNG" width="50" height="50" alt="level"> --}}
+                                <p style="padding: 0; font-size:0.7rem">The Commission rate is 0.65%</p>
+                                <p>Daily task is:38</p>
+                            </div>
+                        </div>
+                        @elseif($level->current_level = "3")
+                        <div class="vip0">
+                            <div style="padding: 0;" class="contents">
+                                <strong style="top:20px">VIP 3</strong>
+                                <h5>$0-99</h5>
+                                <i class="bi bi-3-square-fill lvls"></i>
+                                {{-- <img src="assets/img/qaww.PNG" width="50" height="50" alt="level"> --}}
+                                <p style="padding: 0; font-size:0.7rem">The Commission rate is 0.65%</p>
+                                <p>Daily task is:38</p>
+                            </div>
+                        </div>
+                        </div>
+                        @endif
                 </div>
+                
+                @endforeach
                 <div class="panel" id="two-panel">
                     <div class="level" style="display: flex;">
                     <div class="vip0">
                         <div style="padding: 0;" class="contents">
                             <strong style="top:20px">VIP 0</strong>
                             <h5>$0-99</h5>
-                            <img src="assets/img/qaww.PNG" width="50" height="50" alt="level">
+                            <i class="bi bi-0-square-fill lvls"></i>
+                            {{-- <img src="assets/img/qaww.PNG" width="50" height="50" alt="level"> --}}
                             <p style="padding: 0; font-size:0.7rem">The Commission rate is 0.65%</p>
                             <p>Daily task is:38</p>
                         </div>
@@ -116,7 +173,8 @@
                         <div style="padding: 0;" class="contents">
                             <strong style="top:20px">VIP 1</strong>
                             <h5>$0-99</h5>
-                            <img src="assets/img/qaww.PNG" width="50" height="50" alt="level">
+                            <i class="bi bi-1-square-fill lvls"></i>
+                            {{-- <img src="assets/img/qaww.PNG" width="50" height="50" alt="level"> --}}
                             <p style="padding: 0; font-size:0.7rem">The Commission rate is 0.65%</p>
                             <p>Daily task is:38</p>
                         </div>
@@ -127,7 +185,8 @@
                         <div style="padding: 0;" class="contents">
                             <strong style="top:20px">VIP 2</strong>
                             <h5>$0-99</h5>
-                            <img src="assets/img/qaww.PNG" width="50" height="50" alt="level">
+                            <i class="bi bi-2-square-fill lvls"></i>
+                            {{-- <img src="assets/img/qaww.PNG" width="50" height="50" alt="level"> --}}
                             <p style="padding: 0; font-size:0.7rem">The Commission rate is 0.65%</p>
                             <p>Daily task is:38</p>
                         </div>
@@ -137,7 +196,8 @@
                         <div style="padding: 0;" class="contents">
                             <strong style="top:20px">VIP 3</strong>
                             <h5>$0-99</h5>
-                            <img src="assets/img/qaww.PNG" width="50" height="50" alt="level">
+                            <i class="bi bi-3-square-fill lvls"></i>
+                            {{-- <img src="assets/img/qaww.PNG" width="50" height="50" alt="level"> --}}
                             <p style="padding: 0; font-size:0.7rem">The Commission rate is 0.65%</p>
                             <p>Daily task is:38</p>
                         </div>

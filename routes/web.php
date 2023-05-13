@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/top-up', [UnivController::class, 'topup'])->name('topup');
     Route::get('/top-up-submit', [UnivController::class, 'topupsubmit'])->name('topupsubmit');
     Route::post('/deposit', [UnivController::class, 'deposit'])->name('deposit');
+    Route::post('/withdraw', [UnivController::class, 'withdraw'])->name('withdraw');
 
     Route::resource('/order', OrderController::class);
 

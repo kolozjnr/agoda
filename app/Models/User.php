@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Wallet;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -89,4 +90,10 @@ class User extends Authenticatable
         return $this->referral_link = route('register', ['ref' => $this->referral_code]);
     }
 
+    public function wallet(){
+        return $this->hasOne(Wallet::class);
+    }
+    public function withdraw(){
+        return $this->hasOne(Withraw::class);
+    }
 }

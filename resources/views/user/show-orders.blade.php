@@ -23,9 +23,9 @@
                 $rand = random_int(1000000000,9999999999);
             @endphp
 
-            <div class="warpper">
-                <div class="card-orders" style="height: auto;">
-                    <h3 class="card-title">Available Orders</h3>
+            <div class="warpper" style="margin auto">
+                <div class="card-orders" style="height: auto; margin:auto; text-align:center;">
+                    <h3 class="card-title" style="padding-top: 10px; font-weight:600; font-family:sans-serif">Available Orders</h3>
                     <div class="orders" style="margin: 10px">
                         @foreach ($orders as $item)
                         <p>{{$item->order_no}}</p>

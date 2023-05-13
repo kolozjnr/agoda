@@ -134,7 +134,6 @@
                 border-color: #aaa;
                 }
 
-                
                 </style>
                 <script>
                    function popmenu(){
@@ -149,7 +148,7 @@
             <input class="radio" id="one" name="group" type="radio" checked>
                 <input class="radio" id="two" name="group" type="radio">
                 <input class="radio" id="three" name="group" type="radio">
-                <div class="tabs" >
+                <div class=../"tabs" >
                     <label class="tab" id="one-tab" for="one">Bank Card</label>
                     <label class="tab" id="two-tab" for="two">Crypto</label>
                     <!-- <label class="tab" id="three-tab" for="three">Prerequisites</label> -->
@@ -183,7 +182,6 @@
                                 <label for="payee Name">Phone Number:</label>
                                 <input type="text" name="" id="" class="form__contro">
                             </div>
-
                             <span>
                                 <ul>
                                     <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est nobis fugit tenetur corrupti quo, accusamus iure corporis voluptatibus impedit minima.</li>
@@ -202,7 +200,52 @@
                        
                     </form>
                 </div>
+                @if ($associateWallet >0)
                 <div class="panel" id="two-panel">
+                    <div class="withdrawal__card" style="margin-bottom: 10px">
+                        <button class="withdrawal__btnn">Withdraw</button>
+                    </div>
+                    
+                    @foreach ($wallets as $item)
+                    <form method="POST" action="{{route('withdraw')}}" id="withdraw" >
+                        @csrf
+                        <h2 style="font-family: sans-serif; font-weight:900; font-size:1.5rem; margin-top:10x; margin-bottom:10px;">Kindly Contact Support for any Wallet related issues</h2>
+                        <div class="form__group" style="width:350px !important">
+                            <div class="" style=" margin-bottom:30px;">
+                                
+                                <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                                <input type="hidden" name="status" value="1">
+                                    
+                                
+                                <!-- <label for="payee Name">Payee Name:</label> -->
+                                <select name="type" id="" class="select-css" style="width: 230px;">
+                                    <option value="{{$item->type}}">{{$item->type}}</option>
+                                </select>
+                            </div>
+                            
+                            <div class="" style=" margin-bottom:30px;">
+                                <!-- <label for="payee Name">Account No:</label> -->
+                                <select name="network" id="" class="select-css" style="width: 230px;">
+                                    <option value="{{$item->network}}">{{$item->network}}</option>
+                                </select>
+                            </div>
+                            
+                            <div class="" style="flex-direction:row; display:block;  margin-bottom:30px;">
+                                <label for="payee Name">Address:</label>
+                                <input type="text" name="address" value="{{$item->address}}" id="" class="form__contro" readonly>
+                            </div>
+                            
+                            <div class="" style="flex-direction:row; display:block;  margin-bottom:30px;">
+                                <label for="payee Name">Amount:</label>
+                                <input type="number" name="amount" value="" id="" class="form__contro">
+                            </div>
+
+                            <div class="submit__btn">
+                                <button style="margin: auto;" class="withdrawal__btnn">Withdraw</button>
+                            </div>
+                            
+                            @endforeach
+                    @elseif($associateWallet < 0)
                     <div class="withdrawal__card">
                         <button class="withdrawal__btnn">Bind Wallet</button>
                     </div>
@@ -210,7 +253,7 @@
                         @csrf
                         <h2 style="font-family: sans-serif; font-weight:900; font-size:1.5rem">Crypto Wallet</h2>
                         <div class="form__group" style="width:350px !important">
-                            <div class="" style=" margin-bottom:30px;">
+                            <div class="" style="margin-bottom:30px;">
                                 
                                 <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                                 <input type="hidden" name="status" value="1">
@@ -237,16 +280,11 @@
                                 <label for="payee Name">Wallet Address:</label>
                                 <input type="text" name="address" id="" class="form__contro">
                             </div>
-
-                             
-
                             <div class="submit__btn">
                                 <button style="margin: auto;" class="withdrawal__btnn">Bind Wallet</button>
                             </div>
-
-                            
+                            @endif
                         </div>
-                       
                     </form>
                     <!-- <div class="panel-title">Take-Away Skills</div>
                     <p>You will learn many aspects of styling web pages! You’ll be able to set up the correct file structure, edit text and colors, and create attractive layouts. With these skills, you’ll be able to customize the appearance of your web pages to suit your every need!</p> -->
