@@ -6,9 +6,16 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+    <style>
+        .k{
+            
+        }
+    </style>
 
-    <div class="notification" style="background-color: #FFF; margin-top: 50px; margin-bottom: 20px; padding: 5px;">
-        <marquee behavior="" direction="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem facilis dolorem, omnis possimus quod est ad non officiis porro repellat.</marquee>
+    <div class="notification" style="background-color: #FFF; margin-top: 50px; margin-bottom: 20px; padding: 5px; display: flex;
+    align-items: center;
+    height: 50px;">
+        <i class="bi bi-megaphone" style=" margin-right: 10px; font-size: 1.6rem"></i> <marquee behavior="scroll" direction="left">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem facilis dolorem, omnis possimus quod est ad non officiis porro repellat.</marquee>
     </div>
 
     <div class="video">

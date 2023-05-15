@@ -20,8 +20,23 @@ class UnivController extends Controller
         return view("user.account");
     }
 
+    public function postAccount(Request $request){
+        $id = auth()->user()->id;
+        dd($request);
+        $email = $request->email;
+        $fname = $request->fname;
+        $phone_number = $request->phone_number;
+        $user = User::where('id', $id)
+        ->update(['fname'=>$fname, 'email'=>$email, 'phone_number'=>$phone_number]);
+        return back()->with('success', 'Profile Updated Successfully');
+    }
+
     public function task(){
-        return view("user.task");
+        $id = auth()->user()->id;
+
+        $bals = User::where('id', $id)->select('balance')->first();
+        $bal = $bals->balance;
+        return view("user.task", compact("bal"));
     }
 
     public function wallet(){
@@ -37,14 +52,14 @@ class UnivController extends Controller
     public function postWallet(Request $request){
         $user = User::with('user')->count();
         if($user >0){
-            return redirect('wallet')->with("error", "You already have a Binded Card");
+            return redirect('wallet')->with("error", "Card Binded");
         }
         else{
             $wallet = $request->all();
 
             Wallet::create($wallet);
     
-            return redirect('wallet')->with("success", "Wallet bind Successful");
+            return redirect('wallet')->with("success", "Wallet bind Successfull");
         }
         
     }
@@ -59,9 +74,11 @@ class UnivController extends Controller
     public function event(){
         return view("user.event");
     }
+
     public function topup(){
         return view("user.top-up");
     }
+
     public function topupsubmit(Request $req){
         $amount = $req->query("amount");
         $wallet = $req->query("wallet");
@@ -93,18 +110,29 @@ class UnivController extends Controller
 
     public function withdraw(Request $request){
         $user = auth()->user()->id;
-        $getbal = User::where('id', $user)->select('balance')->first();
-        //dd($request->amount);
-        if($getbal.'.00' < $request->amount){
-            return redirect('wallet')->with('error', 'Your Balance is less than the Amount you want to Withdraw');
-        }
-        elseif($getbal.'.00' > $request->amount){
-        $data = $request->all();
+        $getbal = User::where('id', $user)->select(['balance','withdraw_type'])->first();
+        
+            //dd($getbal->balance);
+        if($getbal->withdraw_type === $request->pin){
+        
+            if($getbal.'.00' < $request->amount){
+                return redirect('wallet')->with('error', 'Your Balance is less than the Amount you want to Withdraw');
+            }
+            elseif($getbal.'.00' > $request->amount){
+            $data = $request->all();
 
-        Withdraw::create($data);
+            Withdraw::create($data);
 
-        return redirect('wallet')->with('success', 'withdrawal Successfully placed');
+            return redirect('wallet')->with('success', 'withdrawal Successfully placed');
+            }
+        }else{
+            return redirect('wallet')->with('error', 'Wrong Withdraw Pin');
         }
     }
+
+    public function support(){
+        return view('user.support');
+    }
+    
     
 }

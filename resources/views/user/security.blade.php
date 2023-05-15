@@ -124,9 +124,7 @@
                             <!-- HTML !-->
                                 <button class="button-31" role="button">Submit</button>
                             </div>
-
                         </div>
-                       
                     </form>
                 </div>
                 <div class="panel" id="two-panel">

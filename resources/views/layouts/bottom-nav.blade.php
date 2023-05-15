@@ -53,9 +53,11 @@
     </div>
 
     <div class="mobile-bottom-nav__item">
-        <div class="mobile-bottom-nav__item-content">
-            <i class="bi bi-headset"></i>
-            Customer Service
-        </div>		
+        <a href="{{route('support')}}" class="menus">
+            <div class="mobile-bottom-nav__item-content">
+                <i class="bi bi-headset"></i>
+                Support
+            </div>	
+        </a>	
     </div>
 </nav>

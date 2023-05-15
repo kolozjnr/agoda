@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UnivController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 
@@ -31,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/account', [UnivController::class, 'account'])->name('account');
+    Route::post('/account', [UnivController::class, 'postAccount'])->name('account');
     Route::get('/level', [UnivController::class, 'level'])->name('level');
     Route::get('/event', [UnivController::class, 'event'])->name('event');
     Route::get('/task', [UnivController::class, 'task'])->name('task');
@@ -42,10 +44,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/top-up-submit', [UnivController::class, 'topupsubmit'])->name('topupsubmit');
     Route::post('/deposit', [UnivController::class, 'deposit'])->name('deposit');
     Route::post('/withdraw', [UnivController::class, 'withdraw'])->name('withdraw');
+    Route::get('/support', [UnivController::class, 'support'])->name('support');
 
     Route::resource('/order', OrderController::class);
 
     Route::post('/updateorinsert', [OrderController::class, 'updateorinsert'])->name('updateorinsert');
+
+    Route::resource('/user', UserController::class);
+    Route::get('/getSecurity', [UserController::class, 'getSecurity'])->name('getSecurity');
+    Route::post('/postSecurity', [UserController::class, 'postSecurity'])->name('postSecurity');
+
     
 });
 

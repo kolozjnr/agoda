@@ -240,6 +240,11 @@
                                 <input type="number" name="amount" value="" id="" class="form__contro">
                             </div>
 
+                            <div class="" style="flex-direction:row; display:block;  margin-bottom:30px;">
+                                <label for="payee Name">Pin:</label>
+                                <input type="number" name="pin" value="" id="" class="form__contro">
+                            </div>
+
                             <div class="submit__btn">
                                 <button style="margin: auto;" class="withdrawal__btnn">Withdraw</button>
                             </div>

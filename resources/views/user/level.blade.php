@@ -69,7 +69,7 @@
                     document.getElementById("setgear").click();
                    }
                 </script>
-                <div class="logo">
+                {{-- <div class="logo">
                     <span class="logoimgs">
                         <img src="assets/img/1676378715490.png" class="logoimg" width="150" height="60" alt="Expedia">
                     </span>
@@ -88,7 +88,7 @@
                         <div class="item"><a href="">Log Out</a></div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             <div class="warpper">
                 <input class="radio" id="one" name="group" type="radio" checked>

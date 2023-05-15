@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('admin.add-order');
+        $orders = DB::table('orders')
+        ->where([
+            //["subscription_status", "=", "Active"],
+            ["order_status", "=", "0"],
+            ["order_qty", ">", "0"]])->limit('4')->inRandomOrder()->get();
+
+            return view("user.show-orders", compact("orders"));
     }
 
     /**
@@ -23,6 +30,7 @@ class OrderController extends Controller
     public function create()
     {
         //
+        return view('admin.add-order');
     }
 
     /**
@@ -67,7 +75,8 @@ class OrderController extends Controller
         //     dd($request);
     
             order::create($order);
-            return response()->json(['success'=>'Successfully uploaded.']);
+            return back()->with('success', 'Task Created Successfully');
+           // return response()->json(['success'=>'Successfully uploaded.']);
        // }
     }
 
@@ -76,13 +85,7 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        $orders = DB::table('orders')
-        ->where([
-            //["subscription_status", "=", "Active"],
-            ["order_status", "=", "0"],
-            ["order_qty", ">", "0"]])->limit('4')->inRandomOrder()->get();
-
-            return view("user.show-orders", compact("orders"));
+        
     }
 
     /**
@@ -111,22 +114,31 @@ class OrderController extends Controller
 
     public function updateorinsert(Request $request){
         $id = Auth::user()->id;
-        DB::table('users')
-        ->where('id', $id)
+        $check_task = User::where('id', $id)->select('task_completed')->first();
+        //dd($check_task->task_completed);
+        if($check_task->task_completed >= 6){
+            return back()->with('warning', 'Kindly Upgrade to next Level for more Orders');
+        }else{
+
+        
+            DB::table('users')
+            ->where('id', $id)
+            ->update([
+                'task_completed' => DB::raw('task_completed +1'),
+                'balance' => DB::raw('balance + 5')
+            ]);
+                
+            $order_id = $request->order_id;
+            DB::table('orders')
+        ->where('id', $order_id)
         ->update([
-            'task_completed' => DB::raw('task_completed +1'),
+            'order_qty' => DB::raw('order_qty -1'),
             //'next_task' => DB::raw('current_task + 1')
         ]);
-            
-        $order_id = $request->order_id;
-        DB::table('orders')
-    ->where('id', $order_id)
-    ->update([
-        'order_qty' => DB::raw('order_qty -1'),
-        //'next_task' => DB::raw('current_task + 1')
-    ]);
 
 
-        return response()->json(['success'=>'Successfully updated.']);
+            //return response()->json(['success'=>'Successfully updated.']);
+            return back()->with('success', "Order Succesfully Submitted");
+        }
     }
 }

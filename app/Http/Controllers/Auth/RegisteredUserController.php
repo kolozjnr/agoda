@@ -62,7 +62,9 @@ class RegisteredUserController extends Controller
         }
     
         $user->generateReferralCode();
+        $user->attachRole($request->role_id);
 
+        
         event(new Registered($user));
 
         Auth::login($user);

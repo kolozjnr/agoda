@@ -21,6 +21,7 @@
 
 @if ($message = Session::get('warning'))
 <div class="alert alert-warning alert-block">
+    <i class="bi bi-slash-circle"></i>
     <button class="close" type="button" data-dismiss="alert"></button>
     <strong>{{ $message }}</strong>
 </div>

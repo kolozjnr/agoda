@@ -163,7 +163,7 @@
 
                    
                 </script>
-                <div class="logo">
+                {{-- <div class="logo">
                     <img src="assets/img/1676378715490.png" width="150" height="60" alt="Expedia">
                     <span class="settings">
                         <i style="color:#FFF" onclick="popmenu()" id="gear" class="bi bi-gear"></i>
@@ -179,7 +179,7 @@
                         <div class="item"><a href="">Log Out</a></div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             <div class="warpper">
             <div class="card" style="height: auto;">

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -60,5 +62,31 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function getSecurity(){
+        return view("user.security");
+    }
+    public function postSecurity(Request $request){
+        $id = auth()->user()->id;
+        $user = User::where('id', $id)->select(['password','withdraw_type'])->first();
+
+        $password = Hash::make($request->password);
+        if($password === $user->password){
+            if($request->pin === $request->confirm_pin){
+                $pin = $request->pin;
+
+                $insetPin = new User;
+                $insetPin->withdraw_type = $pin;
+                $user->save();
+                
+            }
+            else{
+                return back()->with("error","Your pin did not match your Confirm Pin");
+            }
+        }
+        else{
+            return back()->with("error","Your password did not match your Login Password");
+        }
+
     }
 }

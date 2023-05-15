@@ -89,7 +89,7 @@
                     <div class="trial__bal"><p>Trial Bonus $3099</p></div>
                     <div class="balance">
                     <h3 class="card-title">Available Balance</h3>
-                    <span>$89976555</span>
+                    <span>$ {{$bal}}</span>
                     </div>
                     <div class="no__of__task">
                         <span class="total__task">
@@ -130,7 +130,7 @@
                     <button id="details" onclick="details()" class="wallet__btn">Details</button>
                 </div>
                 <div class="shap__house" style="margin-top:50px; position:relative">
-                    <a href="{{url('order/show')}}">
+                    <a href="{{route('order.index')}}">
                         <img class="shape" src="https://s3.us-east-2.amazonaws.com/ui.glass/shape.svg" alt="start">
                         <div class="start" style="z-index: 2; padding-top:30px">Start</div>
                     </a>
