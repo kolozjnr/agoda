@@ -4,9 +4,10 @@
         .main {
             display: inline-block;
             margin: 30px;
-            position: fixed;
+            position: absolute;
             width: 150px;
             text-align: left;
+            z-index: 2 !important;
         }
         .list {
             width: 100%;
@@ -52,6 +53,9 @@
             -webkit-transform: translateX(0px);
             transform: translateX(0px);
         }
+        .logoimg{
+            margin-left: 10px;
+        }
         </style>
         <script>
            function popmenu(){
@@ -60,30 +64,30 @@
         </script>
         <div class="logo" style="margin-bottom: 100px;">
             <span class="logoimgs">
-                <img src="{{asset('assets/img/agoda.svg')}}" class="logoimg" width="70" height="100" alt="Agoda">
+                <img src="{{asset('assets/img/agoda.svg')}}" style="" class="logoimg" width="70" height="100" alt="Agoda">
             </span>
            
             <span class="settings">
                 <i style="color:#FFF" onclick="popmenu()" id="gear" class="bi bi-gear"></i>
-                <i class="bi bi-chat-left-dots"></i>
+                {{-- <i class="bi bi-chat-left-dots"></i> --}}
             </span>
-            <div class="main" style="z-index: 9999;">
+            <div class="main">
                 <input type="checkbox" id="drop-5" hidden>
                 <label style="display: none;" id="setgear" class="dropHeader dropHeader-5" for="drop-5">Click Me</label>
                 <div class="list list-5">
                 <div class="item"><a href="{{route('account')}}">Account Settings</a></div>
-                <div class="item"><a href="support.html">Support</a></div>
-                <div class="item"><a href="security.html">Security</a></div>
+                <div class="item"><a href="{{route('support')}}">Support</a></div>
+                <div class="item"><a href="{{route('getSecurity')}}">Security</a></div>
                 
-                <div class="item">
+                <div class="item" style="margin-left: 2px">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
-                        <x-dropdown-link :href="route('logout')"
+                        <a href="route('logout')"
                                 onclick="event.preventDefault();
                                             this.closest('form').submit();">
                             {{ __('Log Out') }}
-                        </x-dropdown-link>
+                        </a>
                     </form>
                 </div>
                 </div>

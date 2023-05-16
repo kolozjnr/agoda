@@ -7,28 +7,28 @@
         <div class="warpper" >
             <div class="card" style="height: auto;">
                 <h3 class="card-title">Account Management</h3>
-                <form action="{{route('account')}}" method="POST" enctype="multipart/form-data" id="bank-bind" style="padding: 20px;">
-                    <div class=" accounts" style="width:350px !important; right:0">
+                <form action="{{route('account')}}" method="POST" enctype="multipart/form-data" id="bank-bind" style="padding: ;">
+                    <div class=" accounts" style="right:0">
                     <div class="" style="flex-direction:row; display:flex; margin-bottom:30px; right:0">
-                            <label for="payee Name" style="width:200px">Avatar:</label>
+                            {{-- <label for="payee Name" style="width:200px">Avatar:</label> --}}
                             <span><img src="assets/img/user_318-563642.avif" class="img-rounded" width="50" height="50" alt=""></span>
                         </div>
                         <hr>
-                        <div class="" style="flex-direction:row; display:flex; margin-bottom:30px; right:0">
-                            <label  style="width:200px" for="payee Name">Fullname:</label>
-                            <input type="text" name="fname" value="{{auth()->user()->name}}" id="fname" class="form__contro" value="">
+                        <div class="" style="flex-direction:row; display:flex; margin-bottom:5px; right:0">
+                            {{-- <label  style="width:200px" for="payee Name">Fullname:</label> --}}
+                            <input type="text" style="margin: 5px; width:250px;" name="fname" value="{{auth()->user()->name}}" id="fname" class="form__contro" value="">
                         </div>
                         <hr>
                         
-                        <div class="" style="flex-direction:row; display:flex;  margin-bottom:30px;">
-                            <label  style="width:200px" for="payee Name">Phone No:</label>
+                        <div class="" style="flex-direction:row; display:flex;  margin-bottom:5px;">
+                            {{-- <label  style="width:200px" for="payee Name">Phone No:</label> --}}
                             
-                            <input type="number" name="phone_number" value="{{auth()->user()->phone_number}}" id="phone_number"  class="form__contro">
+                            <input type="number" name="phone_number" value="{{auth()->user()->phone_number}}" id="phone_number" style="margin: 5px; width:250px;" class="form__contro">
                         </div>
                         <hr>
-                        <div class="" style="flex-direction:row; display:flex;  margin-bottom:30px;">
-                            <label  style="width:200px" for="payee Name">Email:</label>
-                            <input type="text" name="email" id="email" value="{{auth()->user()->email}}" class="form__contro">
+                        <div class="" style="flex-direction:row; display:flex;  margin-bottom:5px;">
+                            {{-- <label  style="width:200px" for="payee Name">Email:</label> --}}
+                            <input type="text" style="margin: 5px; width:250px;" name="email" id="email" value="{{auth()->user()->email}}" class="form__contro">
                         </div>
                         <hr>
 

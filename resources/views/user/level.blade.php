@@ -91,9 +91,9 @@
                 </div> --}}
 
             <div class="warpper">
-                <input class="radio" id="one" name="group" type="radio" checked>
-                <input class="radio" id="two" name="group" type="radio">
-                <input class="radio" id="three" name="group" type="radio">
+                <input class="radio" id="one" name="group" style="display: none" type="radio" checked>
+                <input class="radio" id="two" name="group" style="display: none" type="radio">
+                <input class="radio" id="three" name="group" style="display: none" type="radio">
                 <div class="tabs">
                     <label class="tab" id="one-tab" for="one">Current</label>
                     <label class="tab" id="two-tab" for="two">Level Description</label>
@@ -157,7 +157,7 @@
                 
                 @endforeach
                 <div class="panel" id="two-panel">
-                    <div class="level" style="display: flex;">
+                    <div class="level" style="display: flex; ">
                     <div class="vip0">
                         <div style="padding: 0;" class="contents">
                             <strong style="top:20px">VIP 0</strong>

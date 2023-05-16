@@ -43,14 +43,14 @@
         </a>		
     </div>
 
-    <div class="mobile-bottom-nav__item">
+    {{-- <div class="mobile-bottom-nav__item">
         <a href="welfare.html" class="menus">
             <div class="mobile-bottom-nav__item-content">
                 <i class="bi bi-hospital-fill"></i>
                 Welfare
             </div>	
         </a>	
-    </div>
+    </div> --}}
 
     <div class="mobile-bottom-nav__item">
         <a href="{{route('support')}}" class="menus">

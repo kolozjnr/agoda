@@ -7,7 +7,7 @@ body{
   /* background: linear-gradient(90deg, #edc0bf 0,#c4caef 58%); */
 }
 .warpper{
-    width: 100%;
+    width: 320px;
   display:flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +18,7 @@ body{
 }
 .tab{
   cursor: pointer;
-  padding:10px 20px;
+  padding:5px 5px;
   margin:0px 2px;
   background:#000;
   display:inline-block;

@@ -67,10 +67,11 @@ body {
   .mobile-bottom-nav__item {
     flex-grow: 1;
     text-align: center;
-    font-size: 0.7rem;
+    font-size: 0.3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 3px;
   }
   .mobile-bottom-nav__item--active {
     color: rgb(52, 12, 184);
@@ -496,7 +497,12 @@ background: rgba(255, 255, 255, 0.78);
  *
  */
 
-
+.card-title{
+  text-align: center;
+  padding: 10px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
   main.loaded {
     transition: opacity .25s linear;
     opacity: 1; }

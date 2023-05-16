@@ -140,25 +140,25 @@
                     document.getElementById("setgear").click();
                    }
                 </script>
-                @@include('layouts/header.blade.php');
+                {{-- @include('layouts/header.blade.php'); --}}
             <!-- <div class="withdrawal__card" style="text-align: center;">
                         <button class="withdrawal__btnn">Bind Account</button>
                     </div> -->
-            <div class="warpper" id="card2_wallet">
-            <input class="radio" id="one" name="group" type="radio" checked>
-                <input class="radio" id="two" name="group" type="radio">
-                <input class="radio" id="three" name="group" type="radio">
+            <div class="warpper" id="card2_wallet" style="width:320px">
+            <input class="radio" id="one" name="group" style="display: none" type="radio" >
+                <input class="radio" id="two" name="group" style="display: none" type="radio" checked>
+                <input class="radio" id="three" style="display: none" name="group" type="radio">
                 <div class=../"tabs" >
-                    <label class="tab" id="one-tab" for="one">Bank Card</label>
-                    <label class="tab" id="two-tab" for="two">Crypto</label>
+                    {{-- <label class="tab" id="one-tab" for="one">Main</label> --}}
+                    <label class="tab" id="two-tab" for="two">Balance Withdrawal</label>
                     <!-- <label class="tab" id="three-tab" for="three">Prerequisites</label> -->
                 </div>
-                <d5iv class="panels1" style="">
+                <div class="panels1" style="">
                 <div class="panel" id="one-panel" style="">
                     <div class="withdrawal__card">
                         <button class="withdrawal__btnn">Bind Account</button>
                     </div>
-                    <form action="" id="bank-bind">
+                    {{-- <form action="" id="bank-bind">
                         <h2 style="font-family: sans-serif; font-weight:900; font-size:2rem">Skrill</h2>
                         <div class="form__group" style="width:350px !important">
                             <div class="" style="flex-direction:row; display:block; margin-bottom:5px; margin: 10px;">
@@ -198,7 +198,7 @@
                             
                         </div>
                        
-                    </form>
+                    </form> --}}
                 </div>
                 @if ($associateWallet >0)
                 <div class="panel" id="two-panel">
@@ -209,8 +209,8 @@
                     @foreach ($wallets as $item)
                     <form method="POST" action="{{route('withdraw')}}" id="withdraw" >
                         @csrf
-                        <h2 style="font-family: sans-serif; font-weight:900; font-size:1.5rem; margin-top:10x; margin-bottom:10px;">Kindly Contact Support for any Wallet related issues</h2>
-                        <div class="form__group" style="width:350px !important">
+                        <h2 style="font-family: sans-serif; font-weight:500; font-size:1rem; margin-top:10x; margin-bottom:10px;">Kindly Contact Support for any Wallet related issues</h2>
+                        <div class="form__group" style="width:300px !important">
                             <div class="" style=" margin-bottom:30px;">
                                 
                                 <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
@@ -230,8 +230,8 @@
                                 </select>
                             </div>
                             
+                            <label for="payee Name">Address:</label>
                             <div class="" style="flex-direction:row; display:block;  margin-bottom:30px;">
-                                <label for="payee Name">Address:</label>
                                 <input type="text" name="address" value="{{$item->address}}" id="" class="form__contro" readonly>
                             </div>
                             
@@ -240,8 +240,8 @@
                                 <input type="number" name="amount" value="" id="" class="form__contro">
                             </div>
 
+                            <label for="payee Name">Pin:</label>
                             <div class="" style="flex-direction:row; display:block;  margin-bottom:30px;">
-                                <label for="payee Name">Pin:</label>
                                 <input type="number" name="pin" value="" id="" class="form__contro">
                             </div>
 
@@ -281,8 +281,8 @@
                                 </select>
                             </div>
                             
+                            <label for="payee Name">Wallet Address:</label>
                             <div class="" style="flex-direction:row; display:block;  margin-bottom:30px;">
-                                <label for="payee Name">Wallet Address:</label>
                                 <input type="text" name="address" id="" class="form__contro">
                             </div>
                             <div class="submit__btn">

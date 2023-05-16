@@ -65,7 +65,7 @@
                     document.getElementById("setgear").click();
                    }
                 </script>
-                <div class="logo">
+                {{-- <div class="logo">
                     <img src="assets/img/1676378715490.png" width="150" height="60" alt="Expedia">
                     <span class="settings">
                         <i style="color:#FFF" onclick="popmenu()" id="gear" class="bi bi-gear"></i>
@@ -81,27 +81,37 @@
                         <div class="item"><a href="">Log Out</a></div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             <div class="warpper">
                 <!-- <img class="shape" src="https://s3.us-east-2.amazonaws.com/ui.glass/shape.svg" alt=""> -->
                 <div class="card">
-                    <div class="trial__bal"><p>Trial Bonus $3099</p></div>
+                    <div class="trial__bal"><p>Referal Bonus $ {{$ref_bonus}}</p></div>
                     <div class="balance">
                     <h3 class="card-title">Available Balance</h3>
                     <span>$ {{$bal}}</span>
                     </div>
                     <div class="no__of__task">
                         <span class="total__task">
-                            <strong>Tasks</strong>
-                            <span>3</span> 
+                            <p style="margin: 5px; font-weight:800">Tasks</p>
+                            @if($totalTask = 0)
+                            <span>38</span> 
+                            @elseif($totalTask = 1)
+                            <span>80</span> 
+                            @elseif($totalTask = 2)
+                            <span>170</span> 
+                            @elseif($totalTask = 3)
+                            <span>200</span> 
+                            @elseif($totalTask = 4)
+                            <span>500</span> 
+                            @endif
                         </span>
                         <span class="total__task">
-                            <strong>Today Earning</strong>
-                            <span>$677666</span>
+                            <p style="margin: 5px; font-weight:800">Total Earning</p>
+                            <span>$ {{$bal+$ref_bonus}}</span>
                         </span>
                         <span class="total__task">
-                            <strong>Processing</strong>
+                            <p style="margin: 5px; font-weight:800">Processing</p>
                             <span>0.000</span>
                         </span>
                     </div>
