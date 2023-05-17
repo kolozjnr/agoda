@@ -12,6 +12,11 @@ return [
     'truncate_tables' => true,
 
     'roles_structure' => [
+        'Quest' => [
+            'users' => 'c,r,u,d',
+            'payments' => 'c,r,u,d',
+            'profile' => 'r,u',
+        ],
         'superadministrator' => [
             'users' => 'c,r,u,d',
             'payments' => 'c,r,u,d',
