@@ -81,6 +81,11 @@ body {
     flex-direction: column;
   }
 
+.active
+ {
+  color: #03bb50 !important; /* Example styling for active link */
+  font-weight: bold;
+}
 
   input[type=text], input[type=file], input[type=password], textarea {
     -webkit-transition: all 0.30s ease-in-out;

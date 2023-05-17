@@ -15,11 +15,15 @@
     <div class="notification" style="background-color: #FFF; margin-top: 50px; margin-bottom: 20px; padding: 5px; display: flex;
     align-items: center;
     height: 50px;">
-        <i class="bi bi-megaphone" style=" margin-right: 10px; font-size: 1.6rem"></i> <marquee behavior="scroll" direction="left">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem facilis dolorem, omnis possimus quod est ad non officiis porro repellat.</marquee>
+        <i class="bi bi-megaphone" style=" margin-right: 10px; font-size: 1.6rem"></i> <marquee behavior="scroll" direction="left">Free $10 for every new Referal.</marquee>
     </div>
 
     <div class="video">
-        <video class="video__item" src="assets/img/How to Record Video on Windows 10 (8 Easy Ways ) - EaseUS - Google Chrome 2023-01-31 12-20-25.mp4"></videosrc=>
+        {{-- <video class="video__item" src="assets/img/How to Record Video on Windows 10 (8 Easy Ways ) - EaseUS - Google Chrome 2023-01-31 12-20-25.mp4"></video> --}}
+            <video id="myVideo" controls>
+                <source src="assets/img/How to Record Video on Windows 10 (8 Easy Ways ) - EaseUS - Google Chrome 2023-01-31 12-20-25.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
     </div>
 
     <div class="home__message" style="margin-bottom: 0;">

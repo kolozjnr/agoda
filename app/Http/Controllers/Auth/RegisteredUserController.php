@@ -62,7 +62,7 @@ class RegisteredUserController extends Controller
         }
     
         $user->generateReferralCode();
-        $user->attachRole($request->role_id);
+        $user->addRole('superadministrator');
 
         
         event(new Registered($user));

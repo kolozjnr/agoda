@@ -4,6 +4,7 @@
         .main {
             display: inline-block;
             margin: 30px;
+            right: 50px;
             position: absolute;
             width: 150px;
             text-align: left;

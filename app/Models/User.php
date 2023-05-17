@@ -6,15 +6,17 @@ namespace App\Models;
 use App\Models\Wallet;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
+//use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-//use Laratrust\Traits\LaratrustUserTrait;
+use Laratrust\Contracts\LaratrustUser;
+use Laratrust\Traits\HasRolesAndPermissions;
 
-class User extends Authenticatable
+class User extends Authenticatable implements LaratrustUser
 {
-    use HasApiTokens, HasFactory, Notifiable;
-//LaratrustUserTrait
+    use HasApiTokens, HasFactory, Notifiable, HasRolesAndPermissions;
+  
     /**
      * The attributes that are mass assignable.
      *
