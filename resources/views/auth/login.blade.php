@@ -102,5 +102,16 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
+        {{-- <span class="google">
+            <button class="loginwithGoogle">Login with Google</button>
+        </span> --}}
+        <p class="reg">No Account? <a href="{{route('register')}}">Register</a></p>
+        
+        
     </form>
+    <span id="support" class="support">
+        <button id="support__btn" class="support__btn">
+            <a href="{{route('support')}}">Support <i class="bi bi-headphone"></i></a>
+        </button>
+    </span>
 </x-guest-layout>

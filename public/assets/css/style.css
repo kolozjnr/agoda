@@ -231,12 +231,19 @@ body {
   .vip0{
     width: 150px;
     height: 200px;
-    background-color: #d5e378;
+    /* background-color: rgb(218,180,243); */
+    /* background-color: rgb(253,246,209); */
+    background-image: linear-gradient(#fefde6,#fde79f);
     margin: 15px;
     border-radius: 10px;
     text-align: center;
   }
-
+.vip_head{
+  font-weight: bolder;
+  font-family: sans-serif;
+  padding-top: 20px;
+  color: #B5801B;
+}
 
   /* Task CSS begins here */
 
@@ -315,12 +322,12 @@ background: rgba(255, 255, 255, 0.78);
     font-size: 1rem;
   }
   .no__of__task{
-    width: inherit;
+    width: 330px;
     height: 120px;
     font-size: 0.9rem;
     font-family: sans-serif;
     display: flex;
-    padding: 20px 10px 5px 5px;
+    padding: 20px 10px 0px 0px;
     background: rgba(255, 255, 255, 0.78);
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;

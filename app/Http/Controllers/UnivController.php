@@ -44,19 +44,20 @@ class UnivController extends Controller
     }
 
     public function wallet(){
-        //$user = auth()->user()->id;
-        $associateWallet = Wallet::with('user')->count(); 
+        $user_id = auth()->user()->id;
+        $associateWallet = Wallet::where('user_id', $user_id)->count(); 
         
-        $wallets = Wallet::with('user')->get(); 
+        $wallets = Wallet::where('user_id', $user_id)->get(); 
 
         //dd($wallets);
         return view("user.wallet-bind", compact('associateWallet', 'wallets'));
     }
 
     public function postWallet(Request $request){
-        $user = User::with('user')->count();
+        $user_id = auth()->user()->id;
+        $user = Wallet::where('user_id', $user_id)->count();
         if($user >0){
-            return redirect('wallet')->with("error", "Card Binded");
+            return redirect('wallet')->with("error", "Wallet Already Binded, Contact Support for any Issues");
         }
         else{
             $wallet = $request->all();

@@ -93,7 +93,7 @@
                     </div>
                     <div class="no__of__task">
                         <span class="total__task">
-                            <p style="margin: 5px; font-weight:800">Tasks</p>
+                            <p style=" font-weight:800">Tasks</p>
                             @if($totalTask = 0)
                             <span>38</span> 
                             @elseif($totalTask = 1)
@@ -107,11 +107,11 @@
                             @endif
                         </span>
                         <span class="total__task">
-                            <p style="margin: 5px; font-weight:800">Total Earning</p>
+                            <p style=" font-weight:800">Total Earning</p>
                             <span>$ {{$bal+$ref_bonus}}</span>
                         </span>
                         <span class="total__task">
-                            <p style="margin: 5px; font-weight:800">Processing</p>
+                            <p style=" font-weight:800">Processing</p>
                             <span>0.000</span>
                         </span>
                     </div>

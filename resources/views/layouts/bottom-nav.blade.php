@@ -1,5 +1,5 @@
 
-<nav class="mobile-bottom-nav">
+<nav class="mobile-bottom-nav" style="position: fixed">
     <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
         <a href="{{route('dashboard')}}" class="menus {{ (request()->is('dashboard*')) ? 'active' : ''}}">
             <div class="mobile-bottom-nav__item-content">

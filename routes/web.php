@@ -21,6 +21,7 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/support', [UnivController::class, 'support'])->name('support');
 
 Route::get('/dashboard', function () {
     return view('user.index');
@@ -44,7 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/top-up-submit', [UnivController::class, 'topupsubmit'])->name('topupsubmit');
     Route::post('/deposit', [UnivController::class, 'deposit'])->name('deposit');
     Route::post('/withdraw', [UnivController::class, 'withdraw'])->name('withdraw');
-    Route::get('/support', [UnivController::class, 'support'])->name('support');
     //Route::get('/users', [UnivController::class, 'getUsers'])->name('getUsers');
 
     Route::resource('/order', OrderController::class);

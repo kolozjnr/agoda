@@ -135,6 +135,53 @@
                 }
 
                 </style>
+
+                <style>
+                    .modal {
+                display: none; /* Hide modal by default */
+                position: fixed;
+                z-index: 9999;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0,0,0,0.8);
+                }
+
+                .modal-content {
+                background-color: #fefefe;
+                margin: 10% auto;
+                padding: 2px;
+                border: 1px solid #888;
+                width: 60%;
+                height: 12em;
+                max-width: 300px;
+                animation-name: modal-expand;
+                animation-duration: 2s;
+                }
+
+                .close-modal {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+                }
+
+                .close-modal:hover,
+                .close-modal:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+                }
+
+                /* Keyframe animation for modal expansion */
+                @keyframes modal-expand {
+                from {transform: scale(0.7);}
+                to {transform: scale(1);}
+                }
+
+                </style>
                 <script>
                    function popmenu(){
                     document.getElementById("setgear").click();
@@ -200,6 +247,7 @@
                        
                     </form> --}}
                 </div>
+                {{-- {{$associateWallet}} --}}
                 @if ($associateWallet >0)
                 <div class="panel" id="two-panel">
                     <div class="withdrawal__card" style="margin-bottom: 10px">
@@ -235,14 +283,14 @@
                                 <input type="text" name="address" value="{{$item->address}}" id="" class="form__contro" readonly>
                             </div>
                             
+                            <label for="payee Name">Amount:</label>
                             <div class="" style="flex-direction:row; display:block;  margin-bottom:30px;">
-                                <label for="payee Name">Amount:</label>
-                                <input type="number" name="amount" value="" id="" class="form__contro">
+                                <input type="text" name="amount" value="" id="" class="form__contro">
                             </div>
 
                             <label for="payee Name">Pin:</label>
                             <div class="" style="flex-direction:row; display:block;  margin-bottom:30px;">
-                                <input type="number" name="pin" value="" id="" class="form__contro">
+                                <input type="text" name="pin" value="" id="" class="form__contro">
                             </div>
 
                             <div class="submit__btn">
@@ -250,14 +298,22 @@
                             </div>
                             
                             @endforeach
-                    @elseif($associateWallet < 0)
+                    @else
                     <div class="withdrawal__card">
                         <button class="withdrawal__btnn">Bind Wallet</button>
+                        <button style="display: none" onclick="showm()" id="open-modal">Open Modal</button>
                     </div>
+                    <div class="modal" id="my-modal">
+                        <div class="modal-content">
+                          {{-- <span class="close-modal">&times;</span> --}}
+                          <h2 style="color:#b52a2a; font-family:sans-serif; text-align:center; font-weight:800; padding-top:1em; ">NOTICE!!!</h2>
+                          <p style="text-align: center; font-size:1.1rem; padding:1em; padding-top:0.6em">Please confirm to bind the correct Crypto address information to avoid the problem of cash withdrawal failure</p>
+                        </div>
+                      </div>
                     <form method="POST" action="{{route('wallet')}}" id="wallet-bind" >
                         @csrf
                         <h2 style="font-family: sans-serif; font-weight:900; font-size:1.5rem">Crypto Wallet</h2>
-                        <div class="form__group" style="width:350px !important">
+                        <div class="form__group" style="width:350px !important; text-align:center">
                             <div class="" style="margin-bottom:30px;">
                                 
                                 <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
@@ -265,25 +321,25 @@
                                 <!-- <label for="payee Name">Payee Name:</label> -->
                                 <select name="type" id="" class="select-css" style="width: 230px;">
                                     <option value="" selected disabled>Select Coin Type</option>
-                                    <option value="btc">BTC</option>
-                                    <option value="eth">ETH</option>
-                                    <option value="usdt">USDT</option>
+                                    <option value="BTC">BTC</option>
+                                    <option value="ETH">ETH</option>
+                                    <option value="USDT">USDT</option>
                                 </select>
                             </div>
                             
-                            <div class="" style=" margin-bottom:30px;">
+                            <div class="" style=" margin-bottom:25px;">
                                 <!-- <label for="payee Name">Account No:</label> -->
                                 <select name="network" id="" class="select-css" style="width: 230px;">
                                     <option value="" selected disabled>Select Network Type</option>
-                                    <option value="erc20">ERC-20</option>
-                                    <option value="beb20">BEP-20</option>
-                                    <option value="trc20">TRC-20</option>
+                                    <option value="ERC20">ERC-20</option>
+                                    <option value="BEB20">BEP-20</option>
+                                    <option value="TRC20">TRC-20</option>
                                 </select>
                             </div>
                             
-                            <label for="payee Name">Wallet Address:</label>
+                            {{-- <label for="payee Name">Wallet Address:</label> --}}
                             <div class="" style="flex-direction:row; display:block;  margin-bottom:30px;">
-                                <input type="text" name="address" id="" class="form__contro">
+                                <input type="text" style="width:235px; height:40px" name="address" id="" placeholder="Wallet Address" class="form__contro">
                             </div>
                             <div class="submit__btn">
                                 <button style="margin: auto;" class="withdrawal__btnn">Bind Wallet</button>
@@ -305,4 +361,47 @@
                 text-decoration: none;font-family: sans-serif;
             }
         </style>
+
+
+<script>
+    // Get the modal element
+const modal = document.getElementById("my-modal");
+
+// Get the button that opens the modal
+document.getElementById("open-modal").click();
+
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close-modal")[0];
+
+// When the user clicks on the button, open the modal
+// btn.onclick = function() {
+// modal.style.display = "block";
+// }
+function showm() {
+modal.style.display = "block";
+}
+
+
+// Listen for click events on the document
+document.addEventListener('click', function(event) {
+    // Check if the clicked element is outside the modal
+    if (event.target === modal) {
+        // Close the modal
+        modal.style.display = 'none';
+    }
+});
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+if (event.target == modal) {
+modal.style.display = "none";
+}
+}
+
+</script>
 </x-app-layout>

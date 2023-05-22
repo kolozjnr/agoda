@@ -270,7 +270,7 @@
                     <div style="padding-top: 20px; margin:auto; text-align:center">
                         {{-- <button class="button-28" value="TRC20" id="trc20" role="button">TRC20</button>
                         <button class="button-28" value="ERC20" id="erc20" role="button">ERC20</button> --}}
-                        <select class="form-contro" id="networks" name="networks">
+                        <select class="form-contro" id="networks" name="networks" required>
                             <option value="" selected disabled>Choose Network</option>
                             <option value="ERC20">ERC20</option>
                             <option value="TRC20">TRC20</option>
@@ -293,8 +293,8 @@
                     </div> --}}
                 </div>
 
-                <form action="" id="submit-topup" onsubmit="topUp()">
-                
+                {{-- <form action="" id="submit-topup" onsubmit="topUp()"> --}}
+                    <form action="{{route('support')}}">
                     <!-- HTML !-->
                     <div class="head">
                         <strong class="amt">Amount:</strong>
@@ -309,7 +309,9 @@
             
 
                 <div class="topupbtn" style="margin-top: 10px">
-                    <button class="button-37" role="button">Submit</button>
+                    <button class="button-37" role="button">
+                       Submit
+                    </button>
                 </div>
                 </form>
                 
