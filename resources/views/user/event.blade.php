@@ -155,6 +155,75 @@
                 max-height: 100vh;
                 padding: 1em;
                 }
+
+
+
+
+
+
+
+                /* [SLIDER] */
+                        #slider,  #slider .slide{
+                        width: 320px;
+                        /* height: 250px; */
+                        }
+                        #slider {
+                        overflow: hidden;
+                        margin: 0 auto;
+                        font-size: 1.2em;
+                        /* background: #ffd7d1; */
+                        }
+                        #slider .container {
+                        position: relative;
+                        width: 9000px; /* Assign an insanely large width */
+                        top: 0;
+                        right: 0;
+                        animation: slide-animation 25s infinite;
+                        }
+                        #slider .slide {
+                        position: relative;
+                        float: left;
+                        box-sizing: border-box;
+                        padding: 10px 20px;
+                        }
+
+                        /* [ANIMATION] */
+                        @keyframes slide-animation {
+                        0% { 
+                            opacity: 0;
+                            right: 0;
+                        }
+                        11% {
+                            opacity: 1;
+                            right: 0; 
+                        }
+                        22% { right: 100%; }
+                        33% { right: 100%; }
+                        44% { right: 200%; }
+                        55% { right: 200%; }
+                        66% { right: 300%; }
+                        77% { right: 300%; }
+                        88% {
+                            opacity: 1;
+                            right: 400%; 
+                        }
+                        100% {
+                            opacity: 0;
+                            right: 400%;
+                        }
+                        }
+
+                        /* [DOES NOT MATTER] */
+
+                        h1 {
+                        text-align: center;
+                        }
+                        .evnts-head{
+
+                        }
+                        .evnts{
+                            padding: 10px;
+                        }
                 </style>
                 <script>
                    function popmenu(){
@@ -181,10 +250,136 @@
                     </div>
                 </div> --}}
 
-            <div class="warpper">
-            <div class="card" style="height: auto;">
+            <div class="warpper" style="position: fixed;">
+            <div class="card" style="height: auto; background-color:#ecf0f1">
                     <h3 class="card-title">Event</h3>
-                    <div class="row">
+
+                      <div id="slider">
+                        <div class="container">
+                          <div class="slide">
+                            <h4 style="font-family: sans-serif; font-weight:900; font-size:1rem; color:#631313; padding-bottom:10px;">ACCUMULATE TOP-UP REWARD</h4>
+                            <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                $60 or £60 rebate for a cumulative $3,000
+                                or £3,000 recharge
+                            </p>
+                            <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                $160 or £160 rebate for a cumulative $8.000
+                                or £8,000 recharge
+                            </p>
+                                
+
+                                <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                    $300 or £300 rebate for a cumulative $15,000
+                                    or £15,000 recharge
+                                </p>
+                               
+                                
+                            <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                $1000 or £1000 rebate for a cumulative $50,000
+                                or £50,000 recharge
+                            </p>
+                               
+
+                                
+                            <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                $1600 or £1600 rebate for a cumulative $80,000
+                                or £80,000 recharge
+                            </p>
+                               
+                                
+                            <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                $2400 or £2400 rebate for a cumulative $120,000
+                                or £120,000 recharge
+                            </p>
+                              
+                                
+                            <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                Notes: Each member can only redeem the
+                                rewards once on the same day.
+                            </p>
+                               
+                           
+                          </div>
+                          <div class="slide">
+                            <h4 class="evnts-head" style="font-family: sans-serif; font-weight:900; font-size:1rem; color:#631313; padding-bottom:10px;">RESET EVALUATION REWARD</h4>
+                            <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                First reset can get an extra bonus
+                                of 5% of the current reload amount
+                               
+                            </p>
+
+                            <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                Second reset can get an extra bonus
+                                of 8% of the current reload amount
+                            </p>
+
+
+                            <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                Third reset can get an extra bonus
+                                of 10% of the current reload amount
+                            </p>
+
+
+                           
+
+                            
+                             
+                            
+                          </div>
+                          <div class="slide">
+                            <h4 style="font-family: sans-serif; font-weight:900; font-size:1rem; color:#631313; padding-bottom:10px;">RECHARGE REWARD</h4>
+                            <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                Every recharge of $300 or £300 more will
+                                automatically get $15 or £15 bonus
+                            </p>
+                            <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                Every recharge of $1,000 or £1,000 above will
+                                automatically receive $50 or £50
+                                reward
+                            </p>
+                               
+
+                                <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                    Every recharge of $2,500 or £2,500 above will
+                                    automatically receive $200 or £200 reward
+                                </p>
+                                
+
+                                <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                    Every recharge of $5,000 or £5,000 above will
+                                    automatically receive $600 or £600 reward
+                                </p>
+                                
+
+                                <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                    Every recharge of $10,000 or £10,000 above will
+                                    automatically receive $1,200 or £1,200 reward
+                                </p>
+                               
+
+                                <p class="evnts" style="font-family: sans-serif; font-size:1rem">
+                                    Every recharge of $20,000 or £20,000 above will
+                                    automatically receive $2,500 or £2,500 reward
+                                </p>
+                                
+
+                               
+                          </div>
+                          {{-- <div class="slide">
+                            <h3>Slide 4</h3>
+                            <p>
+                              A distributed actor pilots the null pencil. The wild wolfs a damp cage inside the breach. The blank toes the line underneath the arc. The sheep migrates within the transcript.
+                            </p>
+                          </div>
+                          <div class="slide">
+                            <h3>Slide 5</h3>
+                            <p>
+                              The suspected book hums opposite the unacceptable urge. The warning goodbye searches the substitute. This damp loses before the president. The slave elects the north inside an exciting salt.
+                            </p>
+                          </div> --}}
+                        </div>
+                      </div>
+                    {{-- <div class="row">
                     <div class="col">
                         <h2>Open <b>multiple</b></h2>
                         <div class="tabs">
@@ -227,7 +422,7 @@
                         </div>
                         </div>
                     </div> -->
-                    </div>
+                    </div> --}}
                                         
                     <!-- <a href="https://ui.glass">Read more</a> -->
                 </div>

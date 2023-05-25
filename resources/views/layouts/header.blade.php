@@ -63,7 +63,7 @@
             document.getElementById("setgear").click();
            }
         </script>
-        <div class="logo" style="margin-bottom: 100px;">
+        <div class="logo" style="margin-bottom: 100px; position: fixed; z-index: 9">
             <span class="logoimgs">
                 <img src="{{asset('assets/img/agoda.svg')}}" style="" class="logoimg" width="70" height="100" alt="Agoda">
             </span>

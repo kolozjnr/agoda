@@ -160,13 +160,31 @@ navItems.forEach(function(e, i) {
 		// After 3 seconds, remove the show class from DIV
 		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 	  }
-		
+
+	  
 		
 		// Snackbarfirm
 		// function _defineProdoperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _classPrivateFieldGet(receiver, privateMap) {var descriptor = privateMap.get(receiver);if (!descriptor) {throw new TypeError("attempted to get private field on non-instance");}if (descriptor.get) {return descriptor.get.call(receiver);}return descriptor.value;}function _classPrivateFieldSet(receiver, privateMap, value) {var descriptor = privateMap.get(receiver);if (!descriptor) {throw new TypeError("attempted to set private field on non-instance");}if (descriptor.set) {descriptor.set.call(receiver, value);} else {if (!descriptor.writable) {throw new TypeError("attempted to set read only private field");}descriptor.value = value;}return value;}function _classPrivateMethodGet(receiver, privateSet, fn) {if (!privateSet.has(receiver)) {throw new TypeError("attempted to get private field on non-instance");}return fn;}function getElements(toast, elementRef) {
 		// 	return toast.querySelectorAll(`[data-ref=${elementRef}]`);
 		//   }
 		  
+		function copy() {
+			// Get the text field
+			var copyText = document.getElementById("myInput");
+		  
+			// Select the text field
+			copyText.select();
+			copyText.setSelectionRange(0, 99999); // For mobile devices
+		  
+			// Copy the text inside the text field
+			navigator.clipboard.writeText(copyText.value);
+			
+			// Alert the copied text
+			// alert("Copied the text: " + copyText.value);
+		  }
+
+
+  
 		//   function getElement(toast, elementRef) {
 		// 	return getElements(toast, elementRef)[0];
 		//   }var _toastContainer = new WeakMap();var _init = new WeakSet();var _createToastElement = new WeakSet();var _cleanToast = new WeakSet();var _setupEvents = new WeakSet();

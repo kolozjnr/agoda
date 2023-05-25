@@ -86,7 +86,7 @@
             <div class="warpper">
                 <!-- <img class="shape" src="https://s3.us-east-2.amazonaws.com/ui.glass/shape.svg" alt=""> -->
                 <div class="card">
-                    <div class="trial__bal"><p>Referal Bonus $ {{$ref_bonus}}</p></div>
+                    <div class="trial__bal"><p>Referal Bonus $ @if($ref_bonus == 0) {{'0'}} @else {{$ref_bonus}} @endif</p></div>
                     <div class="balance">
                     <h3 class="card-title">Available Balance</h3>
                     <span>$ {{$bal}}</span>
@@ -94,7 +94,8 @@
                     <div class="no__of__task">
                         <span class="total__task">
                             <p style=" font-weight:800">Tasks</p>
-                            @if($totalTask = 0)
+                            <span>38</span> 
+                            {{-- @if($totalTask = 0)
                             <span>38</span> 
                             @elseif($totalTask = 1)
                             <span>80</span> 
@@ -104,7 +105,7 @@
                             <span>200</span> 
                             @elseif($totalTask = 4)
                             <span>500</span> 
-                            @endif
+                            @endif --}}
                         </span>
                         <span class="total__task">
                             <p style=" font-weight:800">Total Earning</p>

@@ -13,6 +13,7 @@
                             {{-- <label for="payee Name" style="width:200px">Avatar:</label> --}}
                             <span><img src="assets/img/user_318-563642.avif" class="img-rounded" width="50" height="50" alt=""></span>
                         </div>
+                        <p class="ref_link" style="text-align: center; font-size:0.9rem">Ref ID: <input id="myInput" value="{{auth()->user()->referral_code}}" /> <i onclick="copy()" style="cursor: pointer; font-size:1.3rem" class="bi bi-clipboard"></i></p>
                         <hr>
                         <div class="" style="flex-direction:row; display:flex; margin-bottom:5px; right:0">
                             {{-- <label  style="width:200px" for="payee Name">Fullname:</label> --}}
@@ -37,7 +38,7 @@
                             <input type="text" name="" id="" class="form__contro">
                         </div>
                         <hr> -->
-                        <div class="login__btn">
+                        <div class="login__btn" style="text-align: center">
                         <!-- HTML !-->
                             <button class="button-31" >Update</button>
                         </div>

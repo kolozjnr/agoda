@@ -99,9 +99,9 @@
                     <label class="tab" id="two-tab" for="two">Level Description</label>
                     <!-- <label class="tab" id="three-tab" for="three">Prerequisites</label> -->
                 </div>
-                @foreach ($levels as $level)
-                @if ($level->current_level === "0")
                 <div class="panels">
+                    @foreach ($levels as $level)
+                    @if ($level->current_level === "0")
                 <div class="panel" id="one-panel">
                     {{-- {{$levels}} --}}
                     <div class="level" style="display: flex;">
@@ -202,9 +202,9 @@
                                 <p>Daily task is:38</p>
                             </div>
                         </div>
-                        </div>
                         @endif
                         @endforeach
+                        </div>
                 </div>
 
                 <div class="panel" id="two-panel">
