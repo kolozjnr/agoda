@@ -63,34 +63,36 @@
             document.getElementById("setgear").click();
            }
         </script>
-        <div class="logo" style="margin-bottom: 100px; position: fixed; z-index: 9">
-            <span class="logoimgs">
-                <img src="{{asset('assets/img/agoda.svg')}}" style="" class="logoimg" width="70" height="100" alt="Agoda">
-            </span>
-           
-            <span class="settings">
-                <i style="color:#FFF" onclick="popmenu()" id="gear" class="bi bi-gear"></i>
-                {{-- <i class="bi bi-chat-left-dots"></i> --}}
-            </span>
-            <div class="main">
-                <input type="checkbox" id="drop-5" hidden>
-                <label style="display: none;" id="setgear" class="dropHeader dropHeader-5" for="drop-5">Click Me</label>
-                <div class="list list-5">
-                <div class="item"><a href="{{route('account')}}">Account Settings</a></div>
-                <div class="item"><a href="{{route('support')}}">Support</a></div>
-                <div class="item"><a href="{{route('getSecurity')}}">Security</a></div>
-                
-                <div class="item" style="margin-left: 2px">
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
+        <div class="container" style="padding-top: 50px;">
+            <div class="logo" style="margin-bottom: 100px; position: absolute; z-index: 9">
+                <span class="logoimgs">
+                    <img src="{{asset('assets/img/agoda.svg')}}" style="" class="logoimg" width="70" height="100" alt="Agoda">
+                </span>
+            
+                <span class="settings">
+                    <i style="color:#FFF" onclick="popmenu()" id="gear" class="bi bi-gear"></i>
+                    {{-- <i class="bi bi-chat-left-dots"></i> --}}
+                </span>
+                <div class="main">
+                    <input type="checkbox" id="drop-5" hidden>
+                    <label style="display: none;" id="setgear" class="dropHeader dropHeader-5" for="drop-5">Click Me</label>
+                    <div class="list list-5">
+                    <div class="item"><a href="{{route('account')}}">Account Settings</a></div>
+                    <div class="item"><a href="{{route('support')}}">Support</a></div>
+                    <div class="item"><a href="{{route('getSecurity')}}">Security</a></div>
+                    
+                    <div class="item" style="margin-left: 2px">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
 
-                        <a href="route('logout')"
-                                onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                            {{ __('Log Out') }}
-                        </a>
-                    </form>
-                </div>
+                            <a href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </a>
+                        </form>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>

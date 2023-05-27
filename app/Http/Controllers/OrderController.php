@@ -46,11 +46,11 @@ class OrderController extends Controller
 
         if($image = $request->file('order_file')){
             $destination = 'orders';
-            $profileImage = 'public/orders/'.date('YmdHis'). "." . $image->getClientOriginalExtension();
+            $profileImage = 'orders/'.date('YmdHis'). "." . $image->getClientOriginalExtension();
             $image->move(public_path('orders'), $profileImage);
             $order['order_file'] = $profileImage;
         }
-
+//dd($order);
         
         //f($request->file('order_file')){
         //     $user_id = Auth::user()->id;

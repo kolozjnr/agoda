@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Account') }}
+            {{ __('Order') }}
         </h2>
     </x-slot>
         <section class="container">
@@ -23,12 +23,15 @@
                 $rand = random_int(1000000000,9999999999);
             @endphp
 
-            <div class="warpper" style="margin auto">
+            <div class="warpper" style="margin: auto; margin-top:50px">
                 <div class="card-orders" style="height: auto; margin:auto; text-align:center;">
                     <h3 class="card-title" style="padding-top: 10px; font-weight:600; font-family:sans-serif">Available Orders</h3>
-                    <div class="orders" style="margin: 10px">
+                    <div class="orders" style="margin: 10px; min-height:300px;">
+                        @if(count($orders) < 1)
+                        <p style="text-align: center; color:#535753; font-size:1rem; font-family:'Times New Roman', Times, serif"> No Orders Currently Kindly Check back in a Moment </p>
+                        @else
                         @foreach ($orders as $item)
-                        <p>{{$item->order_no}}</p>
+                        <p style="margin-bottom: 20px"> <strong>Order ID:</strong> {{$item->order_no}} </p>
                         
                         <form action="/updateorinsert" id="updint" method="post">
                             @csrf
@@ -36,13 +39,14 @@
                             <input type="hidden" name="order_id" value="{{$item->id}}">
                             <div class="order d-flex" style="vertical-align: middle">
                                 <img src="/{{$item->order_file}}" width="100" height="100" class="rounded" alt="">
-                                <span style="margin-top: 50px">{{$item->order_desc}}</span>
+                                <span style="margin-top: 25px">{{$item->order_desc}}</span>
                             </div>
                             <div class="but" style="margin:auto">
-                                <button class="btn btn-success">Submit order</button>
+                                <button class="btn btn-success" style="width:100%">Submit order</button>
                             </div>
                         </form>
                         @endforeach
+                        @endif
                     </div>
                     <!-- <a href="https://ui.glass">Read more</a> -->
                 </div>

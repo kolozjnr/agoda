@@ -136,7 +136,8 @@
                 <div class="button__group">
                     <button class="wallet__btn"><a href="{{route('topup')}}"> Top-up</a> </button>
                     <button class="wallet__btn"> <a href="{{route('wallet')}}">Withdraw </a></button>
-                    <button id="record" class="wallet__btn">Record</button>
+                    <button id="rr" onclick="getrr()" class="wallet__btn">R & R</button>
+                    <button id="record" onclick="details()" class="wallet__btn">Record</button>
                     <button id="rr" onclick="getrr()" class="wallet__btn">R & R</button>
                     {{-- <button id="details" onclick="details()" getWithdrawal class="wallet__btn">Details</button> --}}
                     <button id="details" class="wallet__btn"> <a href="{{route('getWithdrawal')}}">Details</a></button>
