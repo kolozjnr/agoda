@@ -5,6 +5,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UnivController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -54,6 +55,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/user', UserController::class);
     Route::get('/getSecurity', [UserController::class, 'getSecurity'])->name('getSecurity');
     Route::post('/postSecurity', [UserController::class, 'postSecurity'])->name('postSecurity');
+
+    Route::get('/Account-details', [DetailsController::class, 'getWithdrawal'])->name('getWithdrawal');
 
     
 });
