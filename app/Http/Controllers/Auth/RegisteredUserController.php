@@ -58,6 +58,8 @@ class RegisteredUserController extends Controller
                     //'next_task' => DB::raw('current_task + 1')
                 ]);
                 $user->referral_bonus = "0";
+            }else{
+                return back()->with('error', 'This Referral Code "'.$request->input('referral_code').'" does not Exist, Kindly check it and try again');
             }
         }
     

@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/deposit', [UnivController::class, 'deposit'])->name('deposit');
     Route::post('/withdraw', [UnivController::class, 'withdraw'])->name('withdraw');
     //Route::get('/users', [UnivController::class, 'getUsers'])->name('getUsers');
+    Route::get('/withdrawal_approval', [UnivController::class, 'withdrawal_approval'])->name('withdrawal_approval');
+    Route::put('/withdrawal_approval/{id}', [UnivController::class, 'approve_withdraw'])->name('approve_withdraw');
 
     Route::resource('/order', OrderController::class);
 

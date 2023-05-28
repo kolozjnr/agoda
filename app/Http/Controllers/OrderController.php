@@ -114,8 +114,11 @@ class OrderController extends Controller
 
     public function updateorinsert(Request $request){
         $id = Auth::user()->id;
-        $check_task = User::where('id', $id)->select('task_completed')->first();
-        //dd($check_task->task_completed);
+        $check_task = User::where('id', $id)->select('task_completed','balance')->first();
+        //dd($check_task->balance);
+        $currentBalance = $check_task->balance;
+        $updatedBalance = $currentBalance + ($currentBalance * 0.0065);
+        //dd($updatedBalance);
         if($check_task->task_completed >= 6){
             return back()->with('warning', 'Kindly Upgrade to next Level for more Orders');
         }else{
@@ -125,7 +128,7 @@ class OrderController extends Controller
             ->where('id', $id)
             ->update([
                 'task_completed' => DB::raw('task_completed +1'),
-                'balance' => DB::raw('balance + 5')
+                'balance' => $updatedBalance
             ]);
                 
             $order_id = $request->order_id;
@@ -138,7 +141,7 @@ class OrderController extends Controller
 
 
             //return response()->json(['success'=>'Successfully updated.']);
-            return back()->with('success', "Order Succesfully Submitted");
+            return redirect('/task')->with('success', "Order Succesfully Submitted");
         }
     }
 }

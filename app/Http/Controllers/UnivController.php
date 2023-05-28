@@ -138,6 +138,26 @@ class UnivController extends Controller
     public function support(){
         return view('user.support');
     }
-    
+
+    public function withdrawal_approval(){
+        $users = Withdraw::where('status', 1)->get();
+        return view('user.withdrawal_approval', compact('users'));
+    }
+    public function approve_withdraw(Request $request, $id){
+        $data = Withdraw::find($id);
+        $user = User::where('id', $data->user_id)->get();
+        foreach($user as $item){
+            if($data->amount > $item->balance){
+                return back()->with('error', 'Amount Withdrawn is Greater than Total amount User has left');
+            }
+            $newBal = intval($item->balance) - intval($data->amount);
+            //dd($data->amount, $item->balance);
+        $update_data = Withdraw::where('id', $data->id)->update(['status' => 0]);
+        $update_user = User::where('id', $data->user_id)->update(['balance' => $newBal]);
+        }
+        //dd($user);
+        //dd($data->user_id);
+        return back()->with('success', 'Withdrawal Approve Successfully');
+    }
     
 }

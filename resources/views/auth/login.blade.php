@@ -110,8 +110,9 @@
         
     </form>
     <span id="support" class="support">
-        <button id="support__btn" class="support__btn">
-            <a href="{{route('support')}}">Support <i class="bi bi-headphone"></i></a>
+        <button id="support__btn" class="support__btn" style="text-align:left">
+            <a href="{{route('support')}}" style="color: #fff; font-weight:600; font-size:1rem"> <i class="bi bi-headset" style="margin-left:8px; margin:5px;"></i> Support</a>
+
         </button>
     </span>
 </x-guest-layout>
