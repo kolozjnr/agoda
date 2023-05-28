@@ -59,6 +59,15 @@
             </div>
         </a>		
     </div>
+
+    <div class="mobile-bottom-nav__item">
+        <a href="{{route('withdrawal_approval')}}" class="menus">
+            <div class="mobile-bottom-nav__item-content">
+                <i class="bi bi-check"></i>
+                Approve
+            </div>	
+        </a>	
+    </div>
 @endif
 
     {{-- <div class="mobile-bottom-nav__item">
@@ -70,14 +79,7 @@
         </a>	
     </div> --}}
 
-    <div class="mobile-bottom-nav__item">
-        <a href="{{route('withdrawal_approval')}}" class="menus">
-            <div class="mobile-bottom-nav__item-content">
-                <i class="bi bi-check"></i>
-                Approve
-            </div>	
-        </a>	
-    </div>
+    
 
     <div class="mobile-bottom-nav__item">
         <a href="{{route('support')}}" class="menus">
