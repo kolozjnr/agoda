@@ -216,28 +216,25 @@
                         <button class="withdrawal__btnn">All Users</button>
                     </div>
                     
-                    <table class="table  table-hover " style="background-color:#fff; padding:2px; border-radius:5px;">
+                    <table class="table  table-hover " style="background-color:#fff; padding:10px; border-radius:5px;">
                         <thead>
                             <tr>
                               <th scope="col">SN</th>
-                              {{-- <th scope="col">Name</th> --}}
+                              <th scope="col">Name</th>
                               <th scope="col">Email</th>
                               <th scope="col">CurrentLevel</th>
                               <th scope="col">UpgradeLevel</th>
                               <th scope="col">LockUser</th>
-                              @if(Auth::user()->hasRole('administrator'))
-                              <th scope="col">Top Up</th>
-                              @endif
                             </tr>
                         </thead>
                         @php
                             $sn = 1;
                         @endphp
-                        <tbody style="padding: 0; margin:0">
+                        <tbody>
                             @foreach($users as $user)
-                            <tr style="margin:">
+                            <tr>
                                 <td>{{$sn++}}</td>
-                                {{-- <td>{{$user->name}}</td> --}}
+                                <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->current_level}}</td>
                                 <td class=""><form action="{{ route('user.update', $user )}}" method="POST">
@@ -247,31 +244,22 @@
                                     </form>  
                                 </td>
                                 @if($user->lock_status === 0)
-                                <td class=""><form action="{{route('ban.user', $user->id)}}" method="POST">
+                                <td class=""><form action="/lock/{{$user->id}}" method="POST">
                                     @csrf
                                     @method('PUT') 
-
+                                    
                                     <button class="btn btn-danger btn-sm" style="padding: 0.5rem">lock</button>
                                     </form>  
                                 </td>
                                 @else
-                                <td class=""><form action="{{ route('user.release', $user->id )}}" method="POST">
+                                <td class=""><form action="{{ route('unlock', $user->id )}}" method="POST">
                                     @csrf
                                     @method('PUT') 
                                     <button class="btn btn-info btn-sm">unlock</button>
                                     </form>  
                                 </td>
                                 @endif
-                                @if(Auth::user()->hasRole('administrator'))
-                                <td class=""><form action="{{ route('user.rechargee', $user->id )}}" method="POST">
-                                    @csrf
-                                    @method('PUT') 
-                                    <input type="number" class="form-contro" name="topUp">
-                                    <button class="btn btn-success btn-sm">Topup</button>
-                                    </form>  
-                                </td>
                             </tr>
-                            @endif
                             @endforeach
                         </tbody>
 

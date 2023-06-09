@@ -49,7 +49,7 @@
                 @include('message.flash-message')
 
                 {{ $slot }}
-                @include("layouts.bottom-nav");
+                @include("layouts.bottom-nav")
             </main>
         </div>
 

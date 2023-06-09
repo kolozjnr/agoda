@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserLockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,13 +34,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/account', [UnivController::class, 'account'])->name('account');
+    Route::get('/account', [UnivController::class, 'account'])->name('account.index');
     Route::post('/account', [UnivController::class, 'postAccount'])->name('account');
     Route::get('/level', [UnivController::class, 'level'])->name('level');
     Route::get('/event', [UnivController::class, 'event'])->name('event');
     Route::get('/task', [UnivController::class, 'task'])->name('task');
     //Route::resource('/task', [TaskController::class]);
-    Route::get('/wallet', [UnivController::class, 'wallet'])->name('wallet');
+    Route::get('/wallet', [UnivController::class, 'wallet'])->name('wallet.index');
     Route::post('/wallet', [UnivController::class, 'postWallet'])->name('wallet');
     Route::get('/support', [UnivController::class, 'support'])->name('support');
     Route::get('/top-up', [UnivController::class, 'topup'])->name('topup');
@@ -55,6 +56,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/updateorinsert', [OrderController::class, 'updateorinsert'])->name('updateorinsert');
 
     Route::resource('/user', UserController::class);
+    //Route::get('/lock', [UserController::class, 'lock'])->name('lock.index');
+    //Route::get('/lock', [UserController::class, 'index'])->name('getlock');
+    Route::put('/lock/{id}', [UserController::class, 'getBanned'])->name('ban.user');
+    Route::put('/unbanuser/{id}', [UserController::class, 'release'])->name('user.release');
+    Route::put('/recharge/{id}', [UserController::class, 'recharge'])->name('user.rechargee');
+
     Route::get('/getSecurity', [UserController::class, 'getSecurity'])->name('getSecurity');
     Route::post('/postSecurity', [UserController::class, 'postSecurity'])->name('postSecurity');
 

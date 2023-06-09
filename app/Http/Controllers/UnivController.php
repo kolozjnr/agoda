@@ -34,13 +34,17 @@ class UnivController extends Controller
     public function task(){
         $id = auth()->user()->id;
 
-        $bals = User::where('id', $id)->select('balance','referral_bonus','current_level')->first();
+        $bals = User::where('id', $id)->select('balance','referral_bonus','current_level','task_completed','trial_balance','earnings')->first();
         $bal = $bals->balance;
         $ref_bonus = $bals->referral_bonus;
         $task = 0;
         $totalTask = $bals->current_level;
+        $task_completed = $bals->task_completed;
+        $trial_balance = $bals->trial_balance;
+        $earning = $bals->earnings;
+        $earnings = number_format($earning, 2);
         
-        return view("user.task", compact("bal","ref_bonus","totalTask"));
+        return view("user.task", compact("bal","ref_bonus","totalTask","task_completed","trial_balance","earnings"));
     }
 
     public function wallet(){

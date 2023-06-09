@@ -40,11 +40,13 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'trial_balance' => '228',
             'task_completed' => '1',
-            'balance' => '10',
+            'balance' => '0',
             'current_level' => '0',
             'password' => Hash::make($request->password),
         ]);
+        //dd($user);
         if ($request->input('referral_code')) {
             $referralUser = User::where('referral_code', $request->input('referral_code'))->first();
             if ($referralUser) {

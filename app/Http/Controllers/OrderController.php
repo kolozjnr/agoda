@@ -19,7 +19,7 @@ class OrderController extends Controller
         ->where([
             //["subscription_status", "=", "Active"],
             ["order_status", "=", "0"],
-            ["order_qty", ">", "0"]])->limit('4')->inRandomOrder()->get();
+            ["order_qty", ">", "0"]])->limit('1')->inRandomOrder()->get();
 
             return view("user.show-orders", compact("orders"));
     }
@@ -114,34 +114,72 @@ class OrderController extends Controller
 
     public function updateorinsert(Request $request){
         $id = Auth::user()->id;
-        $check_task = User::where('id', $id)->select('task_completed','balance')->first();
+        $check_task = User::where('id', $id)->select('task_completed','balance','lock_status','trial_balance','current_level')->first();
         //dd($check_task->balance);
         $currentBalance = $check_task->balance;
         $updatedBalance = $currentBalance + ($currentBalance * 0.0065);
-        //dd($updatedBalance);
-        if($check_task->task_completed >= 6){
-            return back()->with('warning', 'Kindly Upgrade to next Level for more Orders');
-        }else{
-
+        $earn = $currentBalance * 0.00035;
         
-            DB::table('users')
-            ->where('id', $id)
+        $currentTrialBalance = $check_task->trial_balance;
+        $updatedTrialBalance = $currentTrialBalance * 0.00035;
+        //dd($updatedTrialBalance);
+        //dd($updatedBalance);
+        if($check_task->current_level == 0){
+            if($check_task->lock_status == 1){
+                return back()->with('warning', 'Kindly Upgrade to next Level for more Orders');
+            }elseif($check_task->task_completed >= 38){
+                return back()->with('warning', 'You have exceeded your task limit, Kindly withdraw your current balance and upgrade to next Level for more Orders');
+            }else{
+            
+                $user = User::findOrFail($id);
+
+                $user->increment('task_completed');
+                $user->balance = $user->balance + $updatedTrialBalance;
+                $user->earnings = $user->balance + $updatedTrialBalance;
+                //dd($updatedTrialBalance);
+                $user->save();
+
+                $order_id = $request->order_id;
+                DB::table('orders')
+            ->where('id', $order_id)
             ->update([
-                'task_completed' => DB::raw('task_completed +1'),
-                'balance' => $updatedBalance
+                'order_qty' => DB::raw('order_qty -1'),
+                //'next_task' => DB::raw('current_task + 1')
             ]);
-                
-            $order_id = $request->order_id;
-            DB::table('orders')
-        ->where('id', $order_id)
-        ->update([
-            'order_qty' => DB::raw('order_qty -1'),
-            //'next_task' => DB::raw('current_task + 1')
-        ]);
+    
+    
+                //return response()->json(['success'=>'Successfully updated.']);
+                return redirect('/task')->with('success', "Order Succesfully Submitted");
+            }
+        }
+        else
+        {
+            if($check_task->lock_status == 1){
+                return back()->with('warning', 'Kindly Upgrade to next Level for more Orders');
+            }elseif($check_task->task_completed >= 38){
+                return back()->with('warning', 'You have exceeded your task limit, Kindly withdraw your current balance and upgrade to next Level for more Orders');
+            }else{
+            
+                DB::table('users')
+                ->where('id', $id)
+                ->update([
+                    'task_completed' => DB::raw('task_completed +1'),
+                    'balance' => $updatedBalance,
+                    'earnings' => DB::raw('earnings + ' . $earn)
+                ]);
+                    //dd($earn);
+                $order_id = $request->order_id;
+                DB::table('orders')
+            ->where('id', $order_id)
+            ->update([
+                'order_qty' => DB::raw('order_qty -1'),
+                //'next_task' => DB::raw('current_task + 1')
+            ]);
 
 
-            //return response()->json(['success'=>'Successfully updated.']);
-            return redirect('/task')->with('success', "Order Succesfully Submitted");
+                //return response()->json(['success'=>'Successfully updated.']);
+                return redirect('/task')->with('success', "Order Succesfully Submitted");
+            }
         }
     }
 }

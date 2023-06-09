@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -55,7 +56,11 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $update = User::find($id);
+        $update->update([
+            'current_level' => DB::raw('current_level +1'),
+        ]);
+        return back()->with('success', 'User level upgraded to next level');
     }
 
     /**
@@ -65,6 +70,37 @@ class UserController extends Controller
     {
         //
     }
+
+    public function getBanned(Request $request, string $id)
+    {
+        $update = User::find($id);
+        $update->lock_status = '1';
+        $update->save();
+       
+        return back()->with('success', 'User locked out');
+    }
+    
+    
+    public function release(Request $request, string $id)
+    {
+        $update = User::find($id);
+       
+        $update->lock_status = '0';
+        $update->save();
+        return back()->with('success', 'User Unlocked');
+    }
+
+    public function recharge(Request $request, string $id)
+    {
+        $update = User::find($id);
+       
+        $update->balance = $request->topUp;
+        //dd($request->topUp);
+        $update->save();
+        return back()->with('success', 'Recharge Successfull');
+    }
+   
+
     public function getSecurity(){
         return view("user.security");
     }

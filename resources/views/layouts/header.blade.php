@@ -66,7 +66,7 @@
         <div class="container" style="padding-top: 50px;">
             <div class="logo" style="margin-bottom: 100px; position: absolute; z-index: 9">
                 <span class="logoimgs">
-                    <img src="{{asset('assets/img/agoda.svg')}}" style="" class="logoimg" width="70" height="100" alt="Agoda">
+                    <img src="{{asset('assets/img/billsign.JPG')}}" style="border-radius:10px; margin:3px" class="logoimg" width="70" height="100" alt="Billsign">
                 </span>
             
                 <span class="settings">
