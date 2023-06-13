@@ -89,7 +89,18 @@
                     <div class="trial__bal"><p>Trial Balance $ @if($trial_balance == 0) {{'0'}} @else {{$trial_balance}} @endif</p></div>
                     <div class="balance">
                     <h3 class="card-title">Available Balance</h3>
+                   
+                    @if(str_contains($bal, '-'))
+                    @php
+                        $newbal = str_replace('-', '', $bal);
+                    
+                        //$string = $bal;
+                        $modifiedString = substr($bal, 1);
+                    @endphp
+                    <span> <strong>-</strong> ${{$modifiedString}}</span>
+                    @else
                     <span>$ {{$bal}}</span>
+                    @endif
                     </div>
                     <div class="no__of__task">
                         <span class="total__task">

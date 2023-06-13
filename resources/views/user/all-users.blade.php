@@ -223,11 +223,12 @@
                               {{-- <th scope="col">Name</th> --}}
                               <th scope="col">Email</th>
                               <th scope="col">CurrentLevel</th>
+                              <th scope="col">Task</th>
                               <th scope="col">UpgradeLevel</th>
                               <th scope="col">LockUser</th>
-                              @if(Auth::user()->hasRole('administrator'))
+                              {{-- @if(Auth::user()->hasRole('administrator')) --}}
                               <th scope="col">Top Up</th>
-                              @endif
+                              {{-- @endif --}}
                             </tr>
                         </thead>
                         @php
@@ -240,6 +241,7 @@
                                 {{-- <td>{{$user->name}}</td> --}}
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->current_level}}</td>
+                                <td>{{$user->task_completed}}</td>
                                 <td class=""><form action="{{ route('user.update', $user )}}" method="POST">
                                     @csrf
                                     @method('PUT') 
@@ -262,7 +264,7 @@
                                     </form>  
                                 </td>
                                 @endif
-                                @if(Auth::user()->hasRole('administrator'))
+                                {{-- @if(Auth::user()->hasRole('administrator')) --}}
                                 <td class=""><form action="{{ route('user.rechargee', $user->id )}}" method="POST">
                                     @csrf
                                     @method('PUT') 
@@ -271,7 +273,7 @@
                                     </form>  
                                 </td>
                             </tr>
-                            @endif
+                            {{-- @endif --}}
                             @endforeach
                         </tbody>
 
