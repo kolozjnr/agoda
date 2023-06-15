@@ -228,6 +228,7 @@
                               <th scope="col">LockUser</th>
                               {{-- @if(Auth::user()->hasRole('administrator')) --}}
                               <th scope="col">Top Up</th>
+                              <th scope="col">Reset</th>
                               {{-- @endif --}}
                             </tr>
                         </thead>
@@ -270,6 +271,12 @@
                                     @method('PUT') 
                                     <input type="number" class="form-contro" name="topUp">
                                     <button class="btn btn-success btn-sm">Topup</button>
+                                    </form>  
+                                </td>
+                                <td class=""><form action="{{ route('user.reset', $user->id )}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button class="btn btn-success btn-sm">Reset</button>
                                     </form>  
                                 </td>
                             </tr>

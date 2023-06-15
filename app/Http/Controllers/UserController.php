@@ -99,6 +99,15 @@ class UserController extends Controller
         $update->save();
         return back()->with('success', 'Recharge Successfull');
     }
+
+    public function reset(Request $request, string $id){
+        $reset = User::find($id);
+
+        $reset->task_completed = '0';
+
+        $reset->save();
+        return back()->with('success', 'Task reset Succesfully');
+    }
    
 
     public function getSecurity(){

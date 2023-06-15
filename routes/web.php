@@ -61,6 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/lock/{id}', [UserController::class, 'getBanned'])->name('ban.user');
     Route::put('/unbanuser/{id}', [UserController::class, 'release'])->name('user.release');
     Route::put('/recharge/{id}', [UserController::class, 'recharge'])->name('user.rechargee');
+    Route::put('/reset/{id}', [UserController::class, 'reset'])->name('user.reset');
 
     Route::get('/getSecurity', [UserController::class, 'getSecurity'])->name('getSecurity');
     Route::post('/postSecurity', [UserController::class, 'postSecurity'])->name('postSecurity');
