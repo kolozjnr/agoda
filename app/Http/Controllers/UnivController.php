@@ -122,12 +122,12 @@ class UnivController extends Controller
         $getbal = User::where('id', $user)->select(['balance','withdraw_type'])->first();
         
             //dd($getbal->balance);
-        if($getbal->withdraw_type === $request->pin){
+        if($getbal->withdraw_type == $request->pin){
         
-            if($getbal.'.00' < $request->amount){
+            if($getbal->balance < $request->amount){
                 return redirect('wallet')->with('error', 'Your Balance is less than the Amount you want to Withdraw');
             }
-            elseif($getbal.'.00' > $request->amount){
+            elseif($getbal->balance > $request->amount){
             $data = $request->all();
 
             Withdraw::create($data);

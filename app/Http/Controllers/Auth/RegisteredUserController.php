@@ -44,6 +44,7 @@ class RegisteredUserController extends Controller
             'task_completed' => '1',
             'balance' => '0',
             'current_level' => '0',
+            //'withdraw_type' => '0000',
             'password' => Hash::make($request->password),
         ]);
         //dd($user);

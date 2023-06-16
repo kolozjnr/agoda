@@ -132,7 +132,8 @@
                     <div class="withdrawal__card" style="margin-bottom: 20px;">
                         <button class="withdrawal__btnn">Set Withdrawal Pin</button>
                     </div>
-                    <form action="" id="bank-bind" >
+                    <form action="{{route('postSecurity', auth()->user()->id)}}" method="post" id="bank-bind" >
+                        @csrf
                         <div class=" accounts" style="">
                             <div class="" style=" display:flex; flex-direction:column; margin-bottom:30px;">
                                 {{-- <label  style="" for="payee Name" style="margin-left:3px">New Pin:</label> --}}
@@ -144,6 +145,13 @@
                                 {{-- <label  style="" for="payee Name">Confirm Pin:</label> --}}
                                 <input type="password" name="confirm_pin" placeholder="Comfirm Pin" id="" style="" class="form__contro" style="border-radius:6px" required>
                             </div>
+<hr>
+                            <div class="" style=" display:inline-block; margin-bottom:30px;">
+                                {{-- <label  style="" for="payee Name">Confirm Pin:</label> --}}
+                                <input type="password" name="password" placeholder="Password" id="" style="" class="form__contro" style="border-radius:6px" required>
+                            </div>
+
+                            
                             <div class="login__btn">
                             <!-- HTML !-->
                                 <button class="button-31" role="button">Confirm</button>

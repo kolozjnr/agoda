@@ -41,7 +41,7 @@
             </div>
         </a>		
     </div>
-   @if(Auth::user()->hasRole('administrator'))
+   @if(Auth::user()->hasRole('superadministrator'))
     <div class="mobile-bottom-nav__item">
         <a href="{{url('user')}}" class="menus {{ (request()->is('user*')) ? 'active' : ''}}">
             <div class="mobile-bottom-nav__item-content">

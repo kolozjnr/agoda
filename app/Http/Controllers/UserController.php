@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -113,18 +114,22 @@ class UserController extends Controller
     public function getSecurity(){
         return view("user.security");
     }
-    public function postSecurity(Request $request){
-        $id = auth()->user()->id;
-        $user = User::where('id', $id)->select(['password','withdraw_type'])->first();
+    public function postSecurity(Request $request, $id){
+        //$id = auth()->user()->id;
+        $user = User::find($id);
+        //$user = User::where('id', $id)->select(['password','withdraw_type'])->first();
+        //$user1 = Auth::user();
+        //$password = Hash::make($request->password);
+        //dd($password);
+        if(Hash::check($request->password, $user->password)){
+            if($request->pin == $request->confirm_pin){
+                $user->withdraw_type = $request->pin;
 
-        $password = Hash::make($request->password);
-        if($password === $user->password){
-            if($request->pin === $request->confirm_pin){
-                $pin = $request->pin;
-
-                $insetPin = new User;
-                $insetPin->withdraw_type = $pin;
+                // $insetPin = new User;
+                // $insetPin->withdraw_type = $pin;
                 $user->save();
+
+                return back()->with("success","Your pin has been changed successfully");
                 
             }
             else{

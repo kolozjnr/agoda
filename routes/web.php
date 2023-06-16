@@ -64,7 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/reset/{id}', [UserController::class, 'reset'])->name('user.reset');
 
     Route::get('/getSecurity', [UserController::class, 'getSecurity'])->name('getSecurity');
-    Route::post('/postSecurity', [UserController::class, 'postSecurity'])->name('postSecurity');
+    Route::post('/postSecurity{id}', [UserController::class, 'postSecurity'])->name('postSecurity');
 
     Route::get('/Account-details', [DetailsController::class, 'getWithdrawal'])->name('getWithdrawal');
 
