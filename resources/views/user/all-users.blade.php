@@ -229,6 +229,7 @@
                               {{-- @if(Auth::user()->hasRole('administrator')) --}}
                               <th scope="col">Top Up</th>
                               <th scope="col">Reset</th>
+                              <th scope="col">ResetLevel</th>
                               {{-- @endif --}}
                             </tr>
                         </thead>
@@ -277,6 +278,11 @@
                                     @csrf
                                     @method('PUT')
                                     <button class="btn btn-success btn-sm">Reset</button>
+                                    </form>  
+                                </td> <td class=""><form action="{{ route('user.levelReset', $user->id )}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button class="btn btn-success btn-sm">ResetLevel</button>
                                     </form>  
                                 </td>
                             </tr>

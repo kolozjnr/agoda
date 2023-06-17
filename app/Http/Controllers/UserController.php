@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::where('email', '!=', 'dumeki@mailinator.com')->get();
 
         return view('user.all-users', compact('users'));
     }
@@ -96,6 +96,7 @@ class UserController extends Controller
         $update = User::find($id);
        
         $update->balance = $request->topUp;
+        $update->earnings = "0";
         //dd($request->topUp);
         $update->save();
         return back()->with('success', 'Recharge Successfull');
@@ -105,10 +106,23 @@ class UserController extends Controller
         $reset = User::find($id);
 
         $reset->task_completed = '0';
-
+        //$reset->current_level = '0';
+        //dd($f);
         $reset->save();
         return back()->with('success', 'Task reset Succesfully');
     }
+
+    public function levelReset(Request $request, string $id){
+        $reset = User::find($id);
+
+        $reset->current_level = '0';
+        //$reset->balance = '0';
+        //$reset->current_level = '0';
+        //dd($f);
+        $reset->save();
+        return back()->with('success', 'Task reset Succesfully');
+    }
+   
    
 
     public function getSecurity(){
