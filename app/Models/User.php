@@ -44,7 +44,9 @@ class User extends Authenticatable implements LaratrustUser
         'task_completed',
         'current_level',
         'referral_code',
-        'referral_id'
+        'referral_id',
+        'lock_status',
+        'hold_status'
     ];
 
     /**

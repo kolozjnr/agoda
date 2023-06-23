@@ -230,6 +230,8 @@
                               <th scope="col">Top Up</th>
                               <th scope="col">Reset</th>
                               <th scope="col">ResetLevel</th>
+                              <th scope="col">DELETE USER</th>
+                              <th scope="col">HOLD USER</th>
                               {{-- @endif --}}
                             </tr>
                         </thead>
@@ -250,7 +252,7 @@
                                     <button class="btn btn-success btn-sm">Upgrade</button>
                                     </form>  
                                 </td>
-                                @if($user->lock_status === 0)
+                                @if($user->lock_status == 0)
                                 <td class=""><form action="{{route('ban.user', $user->id)}}" method="POST">
                                     @csrf
                                     @method('PUT') 
@@ -279,10 +281,24 @@
                                     @method('PUT')
                                     <button class="btn btn-success btn-sm">Reset</button>
                                     </form>  
-                                </td> <td class=""><form action="{{ route('user.levelReset', $user->id )}}" method="POST">
+                                </td> 
+                                <td class=""><form action="{{ route('user.levelReset', $user->id )}}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <button class="btn btn-success btn-sm">ResetLevel</button>
+                                    </form>  
+                                </td>
+                                <td class=""><form action="{{ route('user.destroy', $user->id )}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn-sm">DELETE USER</button>
+                                    </form>  
+                                </td>
+                                <td class=""><form action="{{ route('user.holdUser', $user->id )}}" method="POST">
+                                    @csrf
+                                    @method('PUT') 
+                                    <input type="number" class="form-contro" value="{{$user->hold_user}}" name="hold">
+                                    <button class="btn btn-success btn-sm">Hold</button>
                                     </form>  
                                 </td>
                             </tr>

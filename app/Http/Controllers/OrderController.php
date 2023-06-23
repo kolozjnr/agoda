@@ -114,14 +114,22 @@ class OrderController extends Controller
 
     public function updateorinsert(Request $request){
         $id = Auth::user()->id;
-        $check_task = User::where('id', $id)->select('task_completed','balance','lock_status','trial_balance','current_level')->first();
+        $check_task = User::where('id', $id)->select('task_completed','balance','lock_status','trial_balance','current_level','reset_status', 'hold_user')->first();
         //dd($check_task->balance);
+        $hold_status = $check_task->hold_user;
         $currentBalance = $check_task->balance;
-        $updatedBalance = $currentBalance + ($currentBalance * 0.0065);
+        $updatedBalance = $currentBalance + ($currentBalance * 0.000035);
         $earn = $currentBalance * 0.00035;
         
         $currentTrialBalance = $check_task->trial_balance;
         $updatedTrialBalance = $currentTrialBalance * 0.00035;
+        $justdoit = 0.4;
+        //$justreset = 0.01;
+
+        //Reset Balance
+        //reset balance
+        $resetBalance = $check_task->trial_balance;
+        $updatedResetBalance = $resetBalance * 0.0009;
         //dd($updatedTrialBalance);
         //dd($updatedBalance);
         if($check_task->current_level == 0){
@@ -129,13 +137,37 @@ class OrderController extends Controller
                 return back()->with('warning', 'Kindly Upgrade to next Level for more Orders');
             }elseif($check_task->task_completed >= 38){
                 return back()->with('warning', 'You have exceeded your task limit, Kindly withdraw your current balance and upgrade to next Level for more Orders');
+            }elseif($check_task->task_completed>= $hold_status){
+                return back()->with('error','You need to fund your account to continue submitting orders');
+            }elseif($check_task->reset_status == 1){
+                //dd($check_task->reset_status);
+                $user = User::findOrFail($id);
+
+                $user->increment('task_completed');
+                $user->balance = $user->balance + $updatedResetBalance;
+                $user->earnings = $user->earnings + $updatedResetBalance;
+                //dd($updatedTrialBalance);
+                $user->save();
+
+                $order_id = $request->order_id;
+                DB::table('orders')
+            ->where('id', $order_id)
+            ->update([
+                'order_qty' => DB::raw('order_qty -1'),
+                //'next_task' => DB::raw('current_task + 1')
+            ]);
+    
+    
+                //return response()->json(['success'=>'Successfully updated.']);
+                return redirect('/task')->with('success', "Order Succesfully Submitted");
+
             }else{
             
                 $user = User::findOrFail($id);
 
                 $user->increment('task_completed');
-                $user->balance = $user->balance + $updatedTrialBalance;
-                $user->earnings = $user->balance + $updatedTrialBalance;
+                $user->balance = $user->balance + $justdoit;
+                $user->earnings = $user->balance + $justdoit;
                 //dd($updatedTrialBalance);
                 $user->save();
 

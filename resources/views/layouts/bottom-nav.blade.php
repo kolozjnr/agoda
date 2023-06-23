@@ -33,14 +33,14 @@
             </div>
         </a>		
     </div>
-    <div class="mobile-bottom-nav__item">
+    {{-- <div class="mobile-bottom-nav__item">
         <a href="{{route('wallet')}}" class="menus {{ (request()->is('wallet*')) ? 'active' : ''}}">
             <div class="mobile-bottom-nav__item-content">
                 <i class="bi bi-currency-bitcoin"></i>
                 Crypto
             </div>
         </a>		
-    </div>
+    </div> --}}
    @if(Auth::user()->hasRole('superadministrator'))
     <div class="mobile-bottom-nav__item">
         <a href="{{url('user')}}" class="menus {{ (request()->is('user*')) ? 'active' : ''}}">

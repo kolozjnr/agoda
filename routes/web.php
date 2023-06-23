@@ -63,6 +63,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/recharge/{id}', [UserController::class, 'recharge'])->name('user.rechargee');
     Route::put('/reset/{id}', [UserController::class, 'reset'])->name('user.reset');
     Route::put('/levelreset/{id}', [UserController::class, 'levelReset'])->name('user.levelReset');
+    Route::put('/hold/{id}', [UserController::class, 'holdUser'])->name('user.holdUser');
+    //Route::put('/deleteuser/{id}', [UserController::class, 'deluser'])->name('user.deluser');
 
     Route::get('/getSecurity', [UserController::class, 'getSecurity'])->name('getSecurity');
     Route::post('/postSecurity{id}', [UserController::class, 'postSecurity'])->name('postSecurity');

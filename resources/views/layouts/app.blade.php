@@ -28,7 +28,9 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        
+        <style>
+            
+        </style>
     </head>
     <body class="font-sans antialiased" style="background-color: rgb(0,131,173);">
         <div class="min-h-screen bg-gray-100" style="background-color: rgb(0,131,173);">

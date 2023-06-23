@@ -70,6 +70,11 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+        $user = User::findOrFail($id);
+
+        $user->delete();
+        return back()->with('success', 'User succesfully deleted');
+
     }
 
     public function getBanned(Request $request, string $id)
@@ -116,12 +121,25 @@ class UserController extends Controller
         $reset = User::find($id);
 
         $reset->current_level = '0';
+        $reset->reset_status = '1';
         //$reset->balance = '0';
         //$reset->current_level = '0';
         //dd($f);
         $reset->save();
         return back()->with('success', 'Task reset Succesfully');
     }
+
+    public function holdUser(Request $request, string $id){
+        $reset = User::find($id);
+
+        $reset->hold_user =$request->hold;
+        //$reset->balance = '0';
+        //$reset->current_level = '0';
+        //dd($f);
+        $reset->save();
+        return back()->with('success', 'Target Hold Succesfully Set');
+    }
+   
    
    
 
