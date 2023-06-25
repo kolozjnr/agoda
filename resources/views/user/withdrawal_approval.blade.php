@@ -213,6 +213,7 @@
                               <th scope="col">Netwok</th>
                               <th scope="col">Amount</th>
                               <th scope="col">Action</th>
+                              <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         @php
@@ -234,7 +235,17 @@
                                     
                                         <button style="height:25px; text-align:center; background-color:#15a930; border-radius:5px; color:#ffffff; padding:5px; font-size:0.8rem; vertical-align:middle; width:80px;" type="submit">Approve</button>
                                     </form>
+                                </td>
+                                <td>
+                                    <form method="POST" action="{{ route('deleteReq', $user->id) }}">
+                                        @csrf
+                                        @method('PUT')
                                     
+                                        <!-- Include input fields for the updated user data -->
+                                    
+                                        <button style="height:25px; text-align:center; background-color:#cd1b03; border-radius:5px; color:#ffffff; padding:5px; font-size:0.8rem; vertical-align:middle; width:80px;" type="submit">DELETE</button>
+                                    </form>
+                                </td>
 
                             </tr>
                             @endforeach

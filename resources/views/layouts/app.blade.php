@@ -32,8 +32,9 @@
             
         </style>
     </head>
-    <body class="font-sans antialiased" style="background-color: rgb(0,131,173);">
-        <div class="min-h-screen bg-gray-100" style="background-color: rgb(0,131,173);">
+    <body class="font-sans antialiased">
+        <div class="min-h-screen bg-gray-10" >
+            
             @include('layouts.header')
             {{-- @include('layouts.navigation') --}}
 

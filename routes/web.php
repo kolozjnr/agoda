@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
     //Route::get('/users', [UnivController::class, 'getUsers'])->name('getUsers');
     Route::get('/withdrawal_approval', [UnivController::class, 'withdrawal_approval'])->name('withdrawal_approval');
     Route::put('/withdrawal_approval/{id}', [UnivController::class, 'approve_withdraw'])->name('approve_withdraw');
+    Route::put('/withdrawal_delete/{id}', [UnivController::class, 'deleteReq'])->name('deleteReq');
 
     Route::resource('/order', OrderController::class);
 

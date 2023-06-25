@@ -25,7 +25,8 @@
         <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 " style="background-color: rgb(0,131,173);">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 " >
+            {{-- style="background-color: rgb(0,131,173);" --}}
             <div>
                 <a href="/">
                     <img src="{{asset('assets/img/billsign.JPG')}}" alt="Billsign Platform" width="100" height="100">

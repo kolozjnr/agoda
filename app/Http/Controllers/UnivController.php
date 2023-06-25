@@ -154,14 +154,27 @@ class UnivController extends Controller
             if($data->amount > $item->balance){
                 return back()->with('error', 'Amount Withdrawn is Greater than Total amount User has left');
             }
-            $newBal = intval($item->balance) - intval($data->amount);
-            //dd($data->amount, $item->balance);
-        $update_data = Withdraw::where('id', $data->id)->update(['status' => 0]);
-        $update_user = User::where('id', $data->user_id)->update(['balance' => $newBal]);
+            else{
+                $newBal = intval($item->balance) - intval($data->amount);
+                //dd($data->amount, $item->balance);
+                //dd($data->id);
+                $update_data = Withdraw::where('id', $data->id)->update(['status' => 0]);
+                $update_user = User::where('id', $data->user_id)->update(['balance' => $newBal]);
+            }
         }
         //dd($user);
         //dd($data->user_id);
         return back()->with('success', 'Withdrawal Approve Successfully');
+    }
+
+    public function deleteReq(Request $request, string $id){
+        $reset = Withdraw::find($id);
+
+        $reset->status = '0';
+        //$reset->current_level = '0';
+        //dd($f);
+        $reset->save();
+        return back()->with('success', 'Withdrawal Deleted Succesfully');
     }
     
 }
