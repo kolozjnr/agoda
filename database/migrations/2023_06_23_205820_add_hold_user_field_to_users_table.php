@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('hold_user')->default('100')->after('lock_status');
+            $table->integer('hold_user_balance')->default('0')->after('lock_status');
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('hold_user');
+            $table->dropColumn('hold_user_balance');
         });
     }
 };

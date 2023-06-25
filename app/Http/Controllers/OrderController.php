@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -114,8 +115,9 @@ class OrderController extends Controller
 
     public function updateorinsert(Request $request){
         $id = Auth::user()->id;
-        $check_task = User::where('id', $id)->select('task_completed','balance','lock_status','trial_balance','current_level','reset_status', 'hold_user')->first();
+        $check_task = User::where('id', $id)->select('task_completed','balance','lock_status','trial_balance','current_level','reset_status', 'hold_user','hold_user_balance')->first();
         //dd($check_task->balance);
+        $holdBal = $check_task->hold_user_balance;
         $hold_status = $check_task->hold_user;
         $currentBalance = $check_task->balance;
         $updatedBalance = $currentBalance + ($currentBalance * 0.000035);
@@ -138,7 +140,9 @@ class OrderController extends Controller
             }elseif($check_task->task_completed >= 38){
                 return back()->with('warning', 'You have exceeded your task limit, Kindly withdraw your current balance and upgrade to next Level for more Orders');
             }elseif($check_task->task_completed>= $hold_status){
-                return back()->with('error','You need to fund your account to continue submitting orders');
+                $message = new HtmlString('You have reached your maximum threshold for orders. Kindly fund your account with the sum of <strong style="font-weight:900"> $' . $holdBal . '</strong> to continue submitting orders');
+
+                return back()->with('error', $message);
             }elseif($check_task->reset_status == 1){
                 //dd($check_task->reset_status);
                 $user = User::findOrFail($id);

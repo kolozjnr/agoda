@@ -133,12 +133,27 @@ class UserController extends Controller
         $reset = User::find($id);
 
         $reset->hold_user =$request->hold;
+        $reset->hold_user_balance =$request->holdBal;
         //$reset->balance = '0';
         //$reset->current_level = '0';
         //dd($f);
         $reset->save();
         return back()->with('success', 'Target Hold Succesfully Set');
     }
+
+    // public function holdUserBal(Request $request, string $id){
+    //     $reset = User::find($id);
+
+    //     $reset->hold_user_balance =$request->holdBal;
+    //     //$reset->balance = '0';
+    //     //$reset->current_level = '0';
+    //     //dd($f);
+    //     $reset->save();
+    //     return back()->with('success', 'Target Hold Balance Succesfully Set');
+    // }
+
+
+    
    
    
    

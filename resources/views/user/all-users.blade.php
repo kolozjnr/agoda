@@ -232,6 +232,7 @@
                               <th scope="col">ResetLevel</th>
                               <th scope="col">DELETE USER</th>
                               <th scope="col">HOLD USER</th>
+                              <th scope="col">HOLD AMOUNT</th>
                               {{-- @endif --}}
                             </tr>
                         </thead>
@@ -298,9 +299,17 @@
                                     @csrf
                                     @method('PUT') 
                                     <input type="number" class="form-contro" value="{{$user->hold_user}}" name="hold">
+                                    <input type="number" class="form-contro" value="{{$user->hold_user_balance}}" name="holdBal">
                                     <button class="btn btn-success btn-sm">Hold</button>
                                     </form>  
                                 </td>
+                                {{-- <td class=""><form action="{{ route('user.holdUserBal', $user->id )}}" method="POST">
+                                    @csrf
+                                    @method('PUT') 
+                                    <input type="number" class="form-contro" value="{{$user->hold_user_balance}}" name="holdBal">
+                                    <button class="btn btn-success btn-sm">Set</button>
+                                    </form>  
+                                </td> --}}
                             </tr>
                             {{-- @endif --}}
                             @endforeach
